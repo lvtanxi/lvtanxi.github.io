@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            NodeJS与Sequelize操作MySql | 
+        
+        檀溪博客
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="吕檀溪">
+    <meta name="description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    <meta name="keywords" content="吕檀溪 檀溪 檀溪博客">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="檀溪博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="NodeJS与Sequelize操作MySql | 檀溪博客">
+    <meta property="og:description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建项目"><span class="post-toc-number">1.</span> <span class="post-toc-text">创建项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建立数据库连接"><span class="post-toc-number">2.</span> <span class="post-toc-text">建立数据库连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义单张表"><span class="post-toc-number">3.</span> <span class="post-toc-text">定义单张表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单表增删改查"><span class="post-toc-number">4.</span> <span class="post-toc-text">单表增删改查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#增"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">增</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#改"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">查</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">删</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关系"><span class="post-toc-number">5.</span> <span class="post-toc-text">关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一对一"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">一对一</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模型定义"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">模型定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#增-1"><span class="post-toc-number">5.1.1.1.</span> <span class="post-toc-text">增</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查-1"><span class="post-toc-number">5.1.1.2.</span> <span class="post-toc-text">查</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#改-1"><span class="post-toc-number">5.1.1.3.</span> <span class="post-toc-text">改</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#删-1"><span class="post-toc-number">5.1.1.4.</span> <span class="post-toc-text">删</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一对多"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">一对多</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模型定义-1"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">模型定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#增-2"><span class="post-toc-number">5.2.1.1.</span> <span class="post-toc-text">增</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查-2"><span class="post-toc-number">5.2.1.2.</span> <span class="post-toc-text">查</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多对多"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">多对多</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模型定义-2"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">模型定义</span></a></li></ol></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                NodeJS与Sequelize操作MySql
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>吕檀溪</strong>
+        <span>5月 08, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=NodeJS与Sequelize操作MySql&url=http://yoursite.com//2017/05/08/NodeJS与Sequelize操作MySql/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/05/08/NodeJS与Sequelize操作MySql/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/05/08/NodeJS与Sequelize操作MySql/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/05/08/NodeJS与Sequelize操作MySql/index.html&title=NodeJS与Sequelize操作MySql" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=檀溪博客&title=NodeJS与Sequelize操作MySql&summary=人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/05/08/NodeJS与Sequelize操作MySql/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/05/08/NodeJS与Sequelize操作MySql/index.html&text=NodeJS与Sequelize操作MySql" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>在使用NodeJS来关系型操作数据库时，为了方便，通常都会选择一个合适的ORM（Object Relationship Model）框架。毕竟直接操作SQL比较繁琐，通过ORM框架，我们可以使用面向对象的方式来操作表。NodeJS社区有很多的ORM框架，我比较喜欢<a href="http://docs.sequelizejs.com/en/v3/" target="_blank" rel="external">Sequelize</a>，它功能丰富，可以非常方便的进行连表查询。本文就以NodeJs+express+sequelize为例，简单的说说sequelize操作数据库的情况。</p>
+</blockquote>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><blockquote>
+<p>我是用WebStorm开发的项目。我们可以File-&gt;New-&gt;Project&gt;Nodejs express app,然后就会出现这样一个项目，然后为我们的项目安装mysql以及sequelizejs。(npm慢可以换成淘宝镜像)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install --save sequelize</div><div class="line">npm install --save mysql</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="建立数据库连接"><a href="#建立数据库连接" class="headerlink" title="建立数据库连接"></a>建立数据库连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var sequelize = new Sequelize(</div><div class="line">    &apos;sample&apos;, // 数据库名</div><div class="line">    &apos;root&apos;,   // 用户名</div><div class="line">    &apos;zuki&apos;,   // 用户密码</div><div class="line">    &#123;</div><div class="line">        &apos;dialect&apos;: &apos;mysql&apos;,  // 数据库使用mysql</div><div class="line">        &apos;host&apos;: &apos;localhost&apos;, // 数据库服务器ip</div><div class="line">        &apos;port&apos;: 3306,        // 数据库服务器端口</div><div class="line">        &apos;define&apos;: &#123;</div><div class="line">            &apos;underscored&apos;: true,  // 字段以下划线（_）来分割（默认是驼峰命名风格）</div><div class="line">            &apos;timestamps&apos;: true, //添加创建和修改时间</div><div class="line">            &apos;harset&apos;: &apos;utf8&apos;, //字符编码</div><div class="line">            &apos;collate&apos;: &apos;utf8_general_ci&apos; //数据库排序规则</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<h2 id="定义单张表"><a href="#定义单张表" class="headerlink" title="定义单张表"></a>定义单张表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var User = sequelize.define(</div><div class="line">    // 默认表名（一般这里写单数），生成时会自动转换成复数形式</div><div class="line">    // 这个值还会作为访问模型相关的模型时的属性名，所以建议用小写形式</div><div class="line">    &apos;user&apos;,</div><div class="line">    // 字段定义（主键、created_at、updated_at默认包含，不用特殊定义）</div><div class="line">    &#123;</div><div class="line">        &apos;emp_id&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(10), // 字段类型</div><div class="line">            &apos;allowNull&apos;: false,         // 是否允许为NULL</div><div class="line">            &apos;unique&apos;: true              // 字段是否UNIQUE</div><div class="line">        &#125;,</div><div class="line">        &apos;nick&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(10),</div><div class="line">            &apos;allowNull&apos;: false</div><div class="line">        &#125;,</div><div class="line">        &apos;department&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.STRING(64),</div><div class="line">            &apos;allowNull&apos;: true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>几点说明：</p>
+<ol>
+<li>建表SQL会自动执行的意思是你主动调用sync的时候。类似这样：User.sync({force: true});（加force:true，会先删掉表后再建表）。我们也可以先定义好表结构，再来定义Sequelize模型，这时可以不用sync。两者在定义阶段没有什么关系，直到我们真正开始操作模型时，才会触及到表的操作，但是我们当然还是要尽量保证模型和表的同步（可以借助一些migration工具）。自动建表功能有风险，使用需谨慎。</li>
+<li>所有数据类型，请参考文档<a href="http://sequelize.readthedocs.org/en/latest/api/datatypes/" target="_blank" rel="external">数据类型</a>。</li>
+<li>模型还可以定义虚拟属性、类方法、实例方法，请参考文档：<a href="http://sequelize.readthedocs.io/en/latest/docs/models-definition/" target="_blank" rel="external">模型定义</a></li>
+<li>其他一些特殊定义如下所示：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">var User = sequelize.define(</div><div class="line">    &apos;user&apos;,</div><div class="line">    &#123;</div><div class="line">        &apos;emp_id&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(10), // 字段类型</div><div class="line">            &apos;allowNull&apos;: false,         // 是否允许为NULL</div><div class="line">            &apos;unique&apos;: true              // 字段是否UNIQUE</div><div class="line">        &#125;,</div><div class="line">        &apos;nick&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(10),</div><div class="line">            &apos;allowNull&apos;: false</div><div class="line">        &#125;,</div><div class="line">        &apos;department&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.STRING(64),</div><div class="line">            &apos;allowNull&apos;: true</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        // 自定义表名</div><div class="line">        &apos;freezeTableName&apos;: true,</div><div class="line">        &apos;tableName&apos;: &apos;xyz_users&apos;,</div><div class="line"></div><div class="line">        // 是否需要增加createdAt、updatedAt、deletedAt字段</div><div class="line">        &apos;timestamps&apos;: true,</div><div class="line"></div><div class="line">        // 不需要createdAt字段</div><div class="line">        &apos;createdAt&apos;: false,</div><div class="line"></div><div class="line">        // 将updatedAt字段改个名</div><div class="line">        &apos;updatedAt&apos;: &apos;utime&apos;</div><div class="line"></div><div class="line">        // 将deletedAt字段改名</div><div class="line">        // 同时需要设置paranoid为true（此种模式下，删除数据时不会进行物理删除，而是设置deletedAt为当前时间</div><div class="line">        &apos;deletedAt&apos;: &apos;dtime&apos;,</div><div class="line">        &apos;paranoid&apos;: true</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="单表增删改查"><a href="#单表增删改查" class="headerlink" title="单表增删改查"></a>单表增删改查</h2><blockquote>
+<p>通过Sequelize获取的模型对象都是一个DAO（Data Access Object）对象，这些对象会拥有许多操作数据库表的实例对象方法（比如：save、update、destroy等），需要获取“干净”的JSON对象可以调用get({‘plain’: true})。通过模型的类方法可以获取模型对象（比如：findById、findAll等）。</p>
+</blockquote>
+<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//请求的参数就像这样：&#123; &apos;emp_id&apos;: &apos;1&apos;,&apos;nick&apos;: &apos;小红&apos;, &apos;department&apos;: &apos;技术部&apos; &#125;</div><div class="line">// 方法1：build后对象只存在于内存中，调用save后才操作db</div><div class="line">exports.add = function (req, res) &#123;</div><div class="line">    let user =  User.build(req.body);</div><div class="line">    user.save().then(function () &#123;</div><div class="line">        new ResultHelp().sendJson(res)</div><div class="line">    &#125;).catch(function (err) &#123;</div><div class="line">        new ResultHelp(&#123;error: err&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line">// 方法2：直接操作db</div><div class="line">exports.add = function (req, res) &#123;</div><div class="line">    User.create(req.body).then(function () &#123;</div><div class="line">        new ResultHelp().sendJson(res)</div><div class="line">    &#125;).catch(function (err) &#123;</div><div class="line">        new ResultHelp(&#123;error: err&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//请求的参数就像这样：&#123; &apos;id&apos;: &apos;1&apos;,&apos;nick&apos;: &apos;小红&apos;&#125;</div><div class="line">exports.update = function (req, res) &#123;</div><div class="line">    let obj = req.body;</div><div class="line">    let param=&#123;</div><div class="line">        nick:obj.nick,</div><div class="line">    &#125;;</div><div class="line">    User.update(param,&#123;</div><div class="line">        where:&#123; id: obj.id&#125;</div><div class="line">    &#125;).then(function (result) &#123;</div><div class="line">        new ResultHelp(&#123;&#125;).sendJson(res)</div><div class="line">    &#125;).catch(function (err) &#123;</div><div class="line">        new ResultHelp(&#123;error: err&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//根据ID单个查询</div><div class="line">exports.find = function (req, res) &#123;</div><div class="line">    User.findById(req.query.id).then(function (result) &#123;</div><div class="line">        new ResultHelp(&#123;data: result&#125;).sendJson(res)</div><div class="line">    &#125;).catch(function (err) &#123;</div><div class="line">        new ResultHelp(&#123;error: err&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line">//分页查询</div><div class="line">exports.findByPage = function (req, res) &#123;</div><div class="line">    let obj = req.body;</div><div class="line">    User.findAll(&#123;</div><div class="line">        offset: (req.query.pageNo-1)*obj.pageSize,</div><div class="line">        limit:  parseInt(req.query.pageSize) //注意要强转一次</div><div class="line">    &#125;).then(function (result) &#123;</div><div class="line">        new ResultHelp(&#123;data: result&#125;).sendJson(res)</div><div class="line">    &#125;).catch(function (err) &#123;</div><div class="line">        new ResultHelp(&#123;error: err&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">exports.delete = function (req, res) &#123;</div><div class="line">    User.destroy(&#123;</div><div class="line">        where:&#123;&quot;id&quot;: req.body.id&#125;</div><div class="line">    &#125;).then(function () &#123;</div><div class="line">        new ResultHelp().sendJson(res)</div><div class="line">    &#125;).catch(function (err) &#123;</div><div class="line">        new ResultHelp(&#123;error: err&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><blockquote>
+<p>都说了我们这是关系性数据库。关系一般有三种：一对一、一对多、多对多。Sequelize提供了清晰易用的接口来定义关系、进行表间的操作。当说到关系查询时，一般会需要获取多张表的数据。有建议用连表查询join的，有不建议的。我的看法是，join查询这种黑科技在数据量小的情况下可以使用，基本没有什么影响，数据量大的时候，join的性能可能会是硬伤，应该尽量避免，可以分别根据索引取单表数据然后在应用层对数据进行join、merge。当然，查询时一定要分页，不要findAll。</p>
+</blockquote>
+<h3 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h3><h4 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义"></a>模型定义</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">var User = sequelize.define(&apos;user&apos;,</div><div class="line">    &#123;</div><div class="line">        &apos;emp_id&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(10),</div><div class="line">            &apos;allowNull&apos;: false,</div><div class="line">            &apos;unique&apos;: true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div><div class="line">var Account = sequelize.define(&apos;account&apos;,</div><div class="line">    &#123;</div><div class="line">        &apos;email&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(20),</div><div class="line">            &apos;allowNull&apos;: false</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div><div class="line"></div><div class="line">/* </div><div class="line"> * User的实例对象将拥有getAccount、setAccount、addAccount方法</div><div class="line"> */</div><div class="line">User.hasOne(Account);</div><div class="line">/*</div><div class="line"> * Account的实例对象将拥有getUser、setUser、addUser方法</div><div class="line"> */</div><div class="line">Account.belongsTo(User);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>一般情况再定义关系的时候我们都不需要去指定外键什么的，因为Sequelize为帮我们创建的，像上面的案例user_id会自动的加到Account</p>
+</blockquote>
+<h5 id="增-1"><a href="#增-1" class="headerlink" title="增"></a>增</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//参数&#123;&quot;user&quot;:&#123;&apos;emp_id&apos;: &apos;1&apos;&#125;,&quot;account&quot;:&#123;&apos;email&apos;: &apos;a&apos;&#125;&#125;</div><div class="line">exports.add = function (req, res) &#123;</div><div class="line">    let account = Account.build(req.body.account);</div><div class="line">    sequelize.transaction(function (t) &#123;</div><div class="line">        return   User.create(req.body, &#123;transaction: t&#125;)</div><div class="line">        .then(function (user) &#123;</div><div class="line">            return  user.setAccount(account);</div><div class="line">        &#125;);</div><div class="line">    &#125;).then(function () &#123;</div><div class="line">        new ResultHelp().sendJson(res)</div><div class="line">    &#125;).catch(function (error) &#123;</div><div class="line">        new ResultHelp(&#123;error: error&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h5 id="查-1"><a href="#查-1" class="headerlink" title="查"></a>查</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">exports.findUsers = function (req, res) &#123;</div><div class="line">    User.findAll(&#123;</div><div class="line">        include: [Account] //这里是包含意思，这样才能查询出account的相关信息</div><div class="line">    &#125;).then(function (users) &#123;</div><div class="line">        new ResultHelp(&#123;data: users&#125;).sendJson(res)</div><div class="line">    &#125;).catch(function (error) &#123;</div><div class="line">        new ResultHelp(&#123;error: error&#125;).sendJson(res)</div><div class="line">    &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h5 id="改-1"><a href="#改-1" class="headerlink" title="改"></a>改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//参数：&#123;&quot;userid&quot;:1,&quot;accountid&quot;:1&#125;</div><div class="line">exports.update = function (req, res) &#123;</div><div class="line">    sequelize.transaction(function (t) &#123;</div><div class="line">        return Promise.all([</div><div class="line">            User.findById(req.body.userid),</div><div class="line">            Account.findById(req.body.accountid),</div><div class="line">        ]).then(function (result) &#123;</div><div class="line">            return result[0].removeAccount(result[1]) //移除某一个账户</div><div class="line">        &#125;)</div><div class="line">    &#125;).then(function () &#123;</div><div class="line">        new ResultHelp().sendJson(res)</div><div class="line">    &#125;).catch(function (error) &#123;</div><div class="line">        new ResultHelp(&#123;error: error&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h5 id="删-1"><a href="#删-1" class="headerlink" title="删"></a>删</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 实际情况中一般都是逻辑是删除，这里就这的真删除</div><div class="line"> */</div><div class="line">exports.delete = function (req, res) &#123;</div><div class="line">    User.destroy(&#123;</div><div class="line">        where: &#123;id: req.body.id&#125;</div><div class="line">    &#125;).then(function () &#123;</div><div class="line">        new ResultHelp().sendJson(res)</div><div class="line">    &#125;).catch(function (error) &#123;</div><div class="line">        new ResultHelp(&#123;error: error&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h3><h4 id="模型定义-1"><a href="#模型定义-1" class="headerlink" title="模型定义"></a>模型定义</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">var User = sequelize.define(&apos;user&apos;,</div><div class="line">    &#123;</div><div class="line">        &apos;emp_id&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(10),</div><div class="line">            &apos;allowNull&apos;: false,</div><div class="line">            &apos;unique&apos;: true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div><div class="line">var Note = sequelize.define(&apos;note&apos;,</div><div class="line">    &#123;</div><div class="line">        &apos;title&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(64),</div><div class="line">            &apos;allowNull&apos;: false</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div><div class="line"></div><div class="line">/*</div><div class="line"> * User的实例对象将拥有getNotes、setNotes、addNote、createNote、removeNote、hasNote方法</div><div class="line"> */</div><div class="line">User.hasMany(Note);</div><div class="line">/*</div><div class="line"> * Note的实例对象将拥有getUser、setUser、createUser方法</div><div class="line"> */</div><div class="line">Note.belongsTo(User);</div></pre></td></tr></table></figure>
+<h5 id="增-2"><a href="#增-2" class="headerlink" title="增"></a>增</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">exports.addUser = function (req, res) &#123;</div><div class="line">    sequelize.transaction(function (t) &#123;</div><div class="line">        return Promise.all([</div><div class="line">            User.create(req.body, &#123;transaction: t&#125;),</div><div class="line">            /**</div><div class="line">             *  individualHooks: true 很关键，批量插入必须使用这个，不然是不会返回数据的id，</div><div class="line">             *  单个插入可以不需要</div><div class="line">             */</div><div class="line">            UserAddress.bulkCreate(req.body.notes, &#123;transaction: t, individualHooks: true&#125;)</div><div class="line">        ]).then(function (result) &#123;</div><div class="line">            return result[0].setNotes(result[1], &#123;transaction: t&#125;),</div><div class="line">        &#125;);</div><div class="line">    &#125;).then(function () &#123;</div><div class="line">        new ResultHelp().sendJson(res)</div><div class="line">    &#125;).catch(function (error) &#123;</div><div class="line">        new ResultHelp(&#123;error: error&#125;).sendJson(res)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h5 id="查-2"><a href="#查-2" class="headerlink" title="查"></a>查</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">exports.findUsers = function (req, res) &#123;</div><div class="line">    User.findAll(&#123;</div><div class="line">        include: [&#123; model: Note&#125;]</div><div class="line">    &#125;).then(function (users) &#123;</div><div class="line">        new ResultHelp(&#123;data: users&#125;).sendJson(res)</div><div class="line">    &#125;).catch(function (error) &#123;</div><div class="line">        new ResultHelp(&#123;error: error&#125;).sendJson(res)</div><div class="line">    &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h3><blockquote>
+<p>在多对多关系中，必须要额外一张关系表来将2个表进行关联，这张表可以是单纯的一个关系表，也可以是一个实际的模型（含有自己的额外属性来描述关系）。我比较喜欢用一个模型的方式，这样方便以后做扩展。</p>
+<h4 id="模型定义-2"><a href="#模型定义-2" class="headerlink" title="模型定义"></a>模型定义</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">var Note = sequelize.define(&apos;note&apos;,</div><div class="line">    &#123;</div><div class="line">        &apos;title&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(64),</div><div class="line">            &apos;allowNull&apos;: false</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div><div class="line">var Tag = sequelize.define(&apos;tag&apos;,</div><div class="line">    &#123;</div><div class="line">        &apos;name&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.CHAR(64),</div><div class="line">            &apos;allowNull&apos;: false,</div><div class="line">            &apos;unique&apos;: true</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div><div class="line">var Tagging = sequelize.define(&apos;tagging&apos;,</div><div class="line">    &#123;</div><div class="line">        &apos;type&apos;: &#123;</div><div class="line">            &apos;type&apos;: Sequelize.INTEGER(),</div><div class="line">            &apos;allowNull&apos;: false</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div><div class="line"></div><div class="line">// Note的实例拥有getTags、setTags、addTag、addTags、createTag、removeTag、hasTag方法</div><div class="line">Note.belongsToMany(Tag, &#123;&apos;through&apos;: Tagging&#125;);</div><div class="line">// Tag的实例拥有getNotes、setNotes、addNote、addNotes、createNote、removeNote、hasNote方法</div><div class="line">Tag.belongsToMany(Note, &#123;&apos;through&apos;: Tagging&#125;);</div></pre></td></tr></table></figure>
+</blockquote>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/05/08/NodeJS与Sequelize操作MySql/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/05/08/NodeJS与Sequelize操作MySql/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//lvtanxi.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/05/09/Java-二叉树/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/05/03/Java-数据结构与算法基础/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="吕檀溪's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        lvtanxi@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:lvtanxi@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android笔记/">Android笔记<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Git笔记/">Git笔记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/NodeJs/">NodeJs<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Redis/">Redis<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Spring-boot/">Spring-boot<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据库/">数据库<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">22</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo">
+        </a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/5121900660/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.svg);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/lvtanxi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;檀溪博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//lvtanxi.disqus.com/count.js" async></script>
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

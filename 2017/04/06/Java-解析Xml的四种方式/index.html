@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java-解析Xml的四种方式 | 
+        
+        檀溪博客
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="吕檀溪">
+    <meta name="description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    <meta name="keywords" content="吕檀溪 檀溪 檀溪博客">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="檀溪博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java-解析Xml的四种方式 | 檀溪博客">
+    <meta property="og:description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四种方法与优缺点与实现"><span class="post-toc-number">1.</span> <span class="post-toc-text">四种方法与优缺点与实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DOM解析-Java自带"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">DOM解析(Java自带)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-优点"><span class="post-toc-number">1.0.1.0.1.</span> <span class="post-toc-text"> 优点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-缺点"><span class="post-toc-number">1.0.1.0.2.</span> <span class="post-toc-text"> 缺点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-实现"><span class="post-toc-number">1.0.1.0.3.</span> <span class="post-toc-text"> 实现</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SAX解析-Java自带"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">SAX解析(Java自带)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-优点-1"><span class="post-toc-number">1.0.2.0.1.</span> <span class="post-toc-text"> 优点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-缺点-1"><span class="post-toc-number">1.0.2.0.2.</span> <span class="post-toc-text"> 缺点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-实现-1"><span class="post-toc-number">1.0.2.0.3.</span> <span class="post-toc-text"> 实现</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JDOM解析-需要jdom的jar"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">JDOM解析(需要jdom的jar)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-优点-2"><span class="post-toc-number">1.0.3.0.1.</span> <span class="post-toc-text"> 优点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-缺点-2"><span class="post-toc-number">1.0.3.0.2.</span> <span class="post-toc-text"> 缺点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-实现-2"><span class="post-toc-number">1.0.3.0.3.</span> <span class="post-toc-text"> 实现</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DOM4J解析-需要dom4j的jar"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">DOM4J解析(需要dom4j的jar)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-优点-3"><span class="post-toc-number">1.0.4.0.1.</span> <span class="post-toc-text"> 优点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-缺点-3"><span class="post-toc-number">1.0.4.0.2.</span> <span class="post-toc-text"> 缺点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#nbsp-实现-3"><span class="post-toc-number">1.0.4.0.3.</span> <span class="post-toc-text"> 实现</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结尾"><span class="post-toc-number">2.</span> <span class="post-toc-text">结尾</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java-解析Xml的四种方式
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>吕檀溪</strong>
+        <span>4月 06, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java-解析Xml的四种方式&url=http://yoursite.com//2017/04/06/Java-解析Xml的四种方式/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/04/06/Java-解析Xml的四种方式/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/04/06/Java-解析Xml的四种方式/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/04/06/Java-解析Xml的四种方式/index.html&title=Java-解析Xml的四种方式" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=檀溪博客&title=Java-解析Xml的四种方式&summary=人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/04/06/Java-解析Xml的四种方式/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/04/06/Java-解析Xml的四种方式/index.html&text=Java-解析Xml的四种方式" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p> 现在的开发过程中往往是前后端分析，那么传输数据的方式就有很多的选择。例如：XML或者Json。这两者的优缺点我就不去探究了。我主要是讲讲用Java解析XML的四种方法</p>
+</blockquote>
+<h2 id="四种方法与优缺点与实现"><a href="#四种方法与优缺点与实现" class="headerlink" title="四种方法与优缺点与实现"></a>四种方法与优缺点与实现</h2><blockquote>
+<p>本文中所用到的xml都是这一个。如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line">&lt;bookstore&gt;</div><div class="line">&lt;book id=&quot;1&quot;&gt;</div><div class="line">    &lt;name&gt;我要自由&lt;/name&gt;</div><div class="line">    &lt;author&gt;乔治马丁&lt;/author&gt;</div><div class="line">    &lt;year&gt;2014&lt;/year&gt;</div><div class="line">    &lt;price&gt;89&lt;/price&gt;</div><div class="line">&lt;/book&gt;</div><div class="line">&lt;book id=&quot;2&quot;&gt;</div><div class="line">    &lt;name&gt;安徒生通话&lt;/name&gt;</div><div class="line">    &lt;year&gt;2004&lt;/year&gt;</div><div class="line">    &lt;price&gt;77&lt;/price&gt;</div><div class="line">    &lt;language&gt;English&lt;/language&gt;</div><div class="line">&lt;/book&gt;</div><div class="line">&lt;/bookstore&gt;</div></pre></td></tr></table></figure>
+<h4 id="DOM解析-Java自带"><a href="#DOM解析-Java自带" class="headerlink" title="DOM解析(Java自带)"></a>DOM解析(Java自带)</h4><blockquote>
+<p>DOM是html和xml的应用程序接口(API)，以层次结构（类似于树型）来组织节点和信息片段，映射XML文档的结构，允许获取和操作文档的任意部分，是W3C的官方标准。</p>
+</blockquote>
+<h6 id="nbsp-优点"><a href="#nbsp-优点" class="headerlink" title="&nbsp;优点"></a>&nbsp;优点</h6><pre><code>1. 允许应用程序对数据和结构做出更改。
+
+2. 访问是双向的，可以在任何时候在树中上下导航，获取和操作任意部分的数据。
+</code></pre><h6 id="nbsp-缺点"><a href="#nbsp-缺点" class="headerlink" title="&nbsp;缺点"></a>&nbsp;缺点</h6><pre><code>1. 通常需要加载整个XML文档来构造层次结构，消耗资源大。
+</code></pre><h6 id="nbsp-实现"><a href="#nbsp-实现" class="headerlink" title="&nbsp;实现"></a>&nbsp;实现</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">public class DomReadXml &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        //创建一个DocumentBuilderFactory的对象</div><div class="line">        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</div><div class="line">        try &#123;</div><div class="line">            //创建DocumentBuilder对象</div><div class="line">            DocumentBuilder builder = dbf.newDocumentBuilder();</div><div class="line">            //通过DocumentBuilder的parse加载xml文件</div><div class="line">            Document document = builder.parse(&quot;ReadXml/books.xml&quot;);</div><div class="line">            //根据标签名获取标签</div><div class="line">            NodeList nodeList = document.getElementsByTagName(&quot;book&quot;);</div><div class="line">            int length = nodeList.getLength();</div><div class="line">            System.out.println(&quot;一共有&quot;+length+&quot;本书&quot;);</div><div class="line">            //这是不知道属性的情况下完成</div><div class="line">            readNode(nodeList);</div><div class="line">            //知道属性的情况</div><div class="line">      /*      Element element;</div><div class="line">            for (int i = 0; i &lt; length; i++) &#123;</div><div class="line">                element= (Element) nodeList.item(i);</div><div class="line">                System.out.println(&quot;id的属性值是：&quot;+element.getAttribute(&quot;id&quot;));</div><div class="line">            &#125;*/</div><div class="line"></div><div class="line">        &#125; catch (ParserConfigurationException | SAXException | IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static void readNode(NodeList nodeList) &#123;</div><div class="line">        //遍历每一个获取到的节点</div><div class="line">        if (nodeList == null)</div><div class="line">            return;</div><div class="line">        int length = nodeList.getLength();</div><div class="line">        Node node;</div><div class="line">        NamedNodeMap nodeAttributes;</div><div class="line">        Node attrItem;</div><div class="line">        for (int i = 0; i &lt; length; i++) &#123;</div><div class="line">            node = nodeList.item(i);</div><div class="line">            //区分出text类型的node一集element类型的node</div><div class="line">            if(node.getNodeType()!=Node.ELEMENT_NODE)</div><div class="line">                continue;</div><div class="line">            //获取节点属性</div><div class="line">            nodeAttributes = node.getAttributes();</div><div class="line">            //这里需要注意getNodeValue不是自己的nodeValue而是第一个子节点的nodeValue，还要注意与getTextContent的区别</div><div class="line">            System.out.println(node.getNodeName() + &quot;&gt;&gt;&quot; + node.getFirstChild().getNodeValue());</div><div class="line">            if (nodeAttributes != null) &#123;</div><div class="line">                //遍历属性</div><div class="line">                int nodeAttributesLength = nodeAttributes.getLength();</div><div class="line">                for (int j = 0; j &lt; nodeAttributesLength; j++) &#123;</div><div class="line">                    //获取某一个属性</div><div class="line">                    attrItem = nodeAttributes.item(j);</div><div class="line">                    System.out.println(attrItem.getNodeName() + &quot;:&quot; + attrItem.getNodeValue());</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            //递归</div><div class="line">            readNode(node.getChildNodes());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="SAX解析-Java自带"><a href="#SAX解析-Java自带" class="headerlink" title="SAX解析(Java自带)"></a>SAX解析(Java自带)</h4><blockquote>
+<p>流模型中的”推”模型分析方式。通过事件驱动，每发现一个节点就引发一个事件，事件推给事件处理器，通过回调方法完成解析工作，解析XML文档的逻辑需要应用程序完成</p>
+</blockquote>
+<h6 id="nbsp-优点-1"><a href="#nbsp-优点-1" class="headerlink" title="&nbsp;优点"></a>&nbsp;优点</h6><pre><code>1. 不需要等待所有数据都被处理，分析就能立即开始。
+
+2. 只在读取数据时检查数据，不需要保存在内存中。
+
+3. 可以在某个条件得到满足时停止解析，不必解析整个文档。
+
+4. 效率和性能较高，能解析大于系统内存的文档
+</code></pre><h6 id="nbsp-缺点-1"><a href="#nbsp-缺点-1" class="headerlink" title="&nbsp;缺点"></a>&nbsp;缺点</h6><pre><code>1. 需要应用程序自己负责TAG的处理逻辑（例如维护父/子关系等），文档越复杂程序就越复杂。
+
+2. 单向导航，无法定位文档层次，很难同时访问同一文档的不同部分数据，不支持XPath。
+</code></pre><h6 id="nbsp-实现-1"><a href="#nbsp-实现-1" class="headerlink" title="&nbsp;实现"></a>&nbsp;实现</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">public class SaxReadXml &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        //获取SAXParserFactory的实例</div><div class="line">        SAXParserFactory factory = SAXParserFactory.newInstance();</div><div class="line">        try &#123;</div><div class="line">            //通过SAXParserFactory获取SAXParser</div><div class="line">            SAXParser saxParser = factory.newSAXParser();</div><div class="line">            saxParser.parse(&quot;ReadXml/books.xml&quot;, new SAXParserHander());</div><div class="line">        &#125; catch (ParserConfigurationException | SAXException | IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static class SAXParserHander extends DefaultHandler &#123;</div><div class="line">        int bookIndex;</div><div class="line"></div><div class="line">        /**</div><div class="line">         * xml的开始标签</div><div class="line">         */</div><div class="line">        @Override</div><div class="line">        public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException &#123;</div><div class="line">            super.startElement(uri, localName, qName, attributes);</div><div class="line">            //获取属性个数</div><div class="line">            int length = attributes.getLength();</div><div class="line">            if (length &gt; 0) &#123;</div><div class="line">                bookIndex++;</div><div class="line">                System.out.println(&quot;开始解析第&quot; + bookIndex + &quot;本书&quot;);</div><div class="line">           /*    //已经知道属性的名称这可以这样做</div><div class="line">               String id = attributes.getValue(&quot;id&quot;);</div><div class="line">               System.out.println(&quot;book的屬性值是：&quot;+id);*/</div><div class="line">                for (int i = 0; i &lt; length; i++) &#123;</div><div class="line">                    //获取属性名称与属性值</div><div class="line">                   String nodeName = attributes.getQName(i);</div><div class="line">                    System.out.println(nodeName + &quot; 的属性值是：&quot; + attributes.getValue(nodeName));</div><div class="line">                &#125;</div><div class="line">            &#125; else if (!&quot;bookstore&quot;.equals(qName)) &#123;</div><div class="line">                System.out.print(&quot;节点名：&quot; + qName);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        /**</div><div class="line">         * xml的结束标签</div><div class="line">         */</div><div class="line">        @Override</div><div class="line">        public void endElement(String uri, String localName, String qName) throws SAXException &#123;</div><div class="line">            super.endElement(uri, localName, qName);</div><div class="line">            //判断是否针对一本书已经遍历结束</div><div class="line">            if (&quot;book&quot;.endsWith(qName)) &#123;</div><div class="line">                System.out.println(&quot;解析完第&quot; + bookIndex + &quot;本书&quot;);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        /**</div><div class="line">         * 解析开始</div><div class="line">         */</div><div class="line">        @Override</div><div class="line">        public void startDocument() throws SAXException &#123;</div><div class="line">            super.startDocument();</div><div class="line">            System.out.println(&quot;SAX解析开始&quot;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 解析结束</div><div class="line">         */</div><div class="line">        @Override</div><div class="line">        public void endDocument() throws SAXException &#123;</div><div class="line">            super.endDocument();</div><div class="line">            System.out.println(&quot;SAX解析结束&quot;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 获取节点值</div><div class="line">         */</div><div class="line">        @Override</div><div class="line">        public void characters(char[] ch, int start, int length) throws SAXException &#123;</div><div class="line">            super.characters(ch, start, length);</div><div class="line">            String value = new String(ch, start, length);</div><div class="line">            if (!&quot;&quot;.equals(value.trim())) &#123;//主要是解决输出控制的情况</div><div class="line">                System.out.println(&quot; 节点值是：&quot; + value);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="JDOM解析-需要jdom的jar"><a href="#JDOM解析-需要jdom的jar" class="headerlink" title="JDOM解析(需要jdom的jar)"></a>JDOM解析(需要jdom的jar)</h4><blockquote>
+<p>Java特定的文档对象模型。自身不包含解析器，使用SAX</p>
+</blockquote>
+<h6 id="nbsp-优点-2"><a href="#nbsp-优点-2" class="headerlink" title="&nbsp;优点"></a>&nbsp;优点</h6><pre><code>1. 使用具体类而不是接口，简化了DOM的API。
+
+2. 大量使用了Java集合类，方便了Java开发人员。
+</code></pre><h6 id="nbsp-缺点-2"><a href="#nbsp-缺点-2" class="headerlink" title="&nbsp;缺点"></a>&nbsp;缺点</h6><pre><code>1. 没有较好的灵活性。
+
+2. 性能较差。
+</code></pre><h6 id="nbsp-实现-2"><a href="#nbsp-实现-2" class="headerlink" title="&nbsp;实现"></a>&nbsp;实现</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">public class JdomReadXml &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        //创建SAXBuilder对象</div><div class="line">        SAXBuilder saxBuilder = new SAXBuilder();</div><div class="line">        InputStream inputStream = null;</div><div class="line">        InputStreamReader inputStreamReader=null;</div><div class="line">        try &#123;</div><div class="line">            //创建一个输入流，加载xml</div><div class="line">            inputStream = new FileInputStream(&quot;ReadXml/books.xml&quot;);</div><div class="line">            //这样做可以解决乱码的问题</div><div class="line">            inputStreamReader = new InputStreamReader(inputStream, &quot;utf-8&quot;);</div><div class="line">            //通过SAXBuilder的build方法，把输入流加载到通过SAXBuilder的build方法中</div><div class="line">            Document document = saxBuilder.build(inputStreamReader);</div><div class="line">            //通过Document获取根节点</div><div class="line">            Element rootElement = document.getRootElement();</div><div class="line">            readXml(rootElement);</div><div class="line">        &#125; catch (JDOMException | IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; finally &#123;</div><div class="line">            if (null != inputStream)</div><div class="line">                try &#123;</div><div class="line">                    inputStream.close();</div><div class="line">                &#125; catch (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            if (null != inputStreamReader)</div><div class="line">                try &#123;</div><div class="line">                    inputStreamReader.close();</div><div class="line">                &#125; catch (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static void readXml(Element element) &#123;</div><div class="line">        //获取节点的子节点</div><div class="line">        List&lt;Element&gt; childrens = element.getChildren();</div><div class="line">        for (Element children : childrens) &#123;</div><div class="line">            //获取所有属性</div><div class="line">            List&lt;Attribute&gt; attributes = children.getAttributes();</div><div class="line">            for (Attribute attribute : attributes) &#123;</div><div class="line">                //获取属性名称以及属性值</div><div class="line">                System.out.println(attribute.getName()+&quot;的属性值是:&quot;+attribute.getValue());</div><div class="line">            &#125;</div><div class="line">            //获取节点名称与节点值</div><div class="line">            if(attributes.size()==0)</div><div class="line">                System.out.println(children.getName()+&quot;的值是：&quot;+children.getValue());</div><div class="line">            readXml(children);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="DOM4J解析-需要dom4j的jar"><a href="#DOM4J解析-需要dom4j的jar" class="headerlink" title="DOM4J解析(需要dom4j的jar)"></a>DOM4J解析(需要dom4j的jar)</h4><blockquote>
+<p>简单易用，采用Java集合框架，并完全支持DOM、SAX和JAXP</p>
+</blockquote>
+<h6 id="nbsp-优点-3"><a href="#nbsp-优点-3" class="headerlink" title="&nbsp;优点"></a>&nbsp;优点</h6><pre><code>1. 大量使用了Java集合类，方便Java开发人员，同时提供一些提高性能的替代方法。
+
+2. 支持XPath。
+
+3. 有很好的性能。
+</code></pre><h6 id="nbsp-缺点-3"><a href="#nbsp-缺点-3" class="headerlink" title="&nbsp;缺点"></a>&nbsp;缺点</h6><pre><code>1. 大量使用了接口，API较为复杂。
+</code></pre><h6 id="nbsp-实现-3"><a href="#nbsp-实现-3" class="headerlink" title="&nbsp;实现"></a>&nbsp;实现</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public class Dom4jReadXml &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        //创建 SAXReader 对象</div><div class="line">        SAXReader saxReader = new SAXReader();</div><div class="line">        try &#123;</div><div class="line">            //通过SAXReader的read方法加载xml,获取Document</div><div class="line">            Document document = saxReader.read(new File(&quot;ReadXml/books.xml&quot;));</div><div class="line">            //通过document获取根节点</div><div class="line">            Element rootElement = document.getRootElement();</div><div class="line">            readXml(rootElement);</div><div class="line">        &#125; catch (DocumentException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static void readXml(Element element) &#123;</div><div class="line">        //获取子节点迭代器</div><div class="line">        Iterator iterator = element.elementIterator();</div><div class="line">        while (iterator != null &amp;&amp; iterator.hasNext()) &#123;</div><div class="line">            //获取子节点</div><div class="line">            Element child = (Element) iterator.next();</div><div class="line">            //获取属性</div><div class="line">            Iterator attributeIterator = child.attributeIterator();</div><div class="line">            while (attributeIterator.hasNext())&#123;</div><div class="line">                DefaultAttribute attribute = (DefaultAttribute) attributeIterator.next();</div><div class="line">                System.out.println(attribute.getName()+&quot;的属性值是:&quot;+attribute.getValue());</div><div class="line">            &#125;</div><div class="line">            if(child.attributeCount()==0)</div><div class="line">                System.out.println(child.getName()+&quot;&gt;&gt;&quot;+child.getTextTrim());</div><div class="line">            readXml(child);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><blockquote>
+<p>还有很多其他解析xml的方式，这里就不一一赘述了。感谢大家。</p>
+</blockquote>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/04/06/Java-解析Xml的四种方式/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/04/06/Java-解析Xml的四种方式/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//lvtanxi.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/04/19/Redis基础用法/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/23/Spring事务摘要/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="吕檀溪's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        lvtanxi@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:lvtanxi@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android笔记/">Android笔记<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Git笔记/">Git笔记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/NodeJs/">NodeJs<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Redis/">Redis<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Spring-boot/">Spring-boot<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据库/">数据库<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">22</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo">
+        </a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/5121900660/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.svg);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/lvtanxi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;檀溪博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//lvtanxi.disqus.com/count.js" async></script>
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Android 开发工程师面试指南 | 
+        
+        檀溪博客
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="吕檀溪">
+    <meta name="description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    <meta name="keywords" content="吕檀溪 檀溪 檀溪博客">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="檀溪博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Android 开发工程师面试指南 | 檀溪博客">
+    <meta property="og:description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#LearningNotes"><span class="post-toc-number">1.</span> <span class="post-toc-text">LearningNotes</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一部分："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">第一部分：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二部分"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">第二部分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第三部分"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">第三部分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第四部分"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">第四部分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第五部分"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">第五部分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第六部分"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">第六部分</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Android 开发工程师面试指南
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>吕檀溪</strong>
+        <span>2月 22, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Android 开发工程师面试指南&url=http://yoursite.com//2017/02/22/Android基础资料/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/02/22/Android基础资料/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/02/22/Android基础资料/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/02/22/Android基础资料/index.html&title=Android 开发工程师面试指南" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=檀溪博客&title=Android 开发工程师面试指南&summary=人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/02/22/Android基础资料/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/02/22/Android基础资料/index.html&text=Android 开发工程师面试指南" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>《Android 开发工程师面试指南 LearningNotes 》，作者是知乎Android开发工程师陶程，由梁观全贡献部分。大家可以去知乎关注这两位用心的少年。这份指南包含了大部分Android开发的基础、进阶知识，不仅可以帮助准备面试的同学，也可以帮助正在学习和工作的同学梳理自己的知识点。有心的同学也可以帮他们不断完善。</p>
+<h1 id="LearningNotes"><a href="#LearningNotes" class="headerlink" title="LearningNotes"></a>LearningNotes</h1><hr>
+<h2 id="第一部分："><a href="#第一部分：" class="headerlink" title="第一部分："></a>第一部分：</h2><ul>
+<li><p><a href="https://github.com/GeniusVJR/LearningNotes/tree/master/Part1/Android" target="_blank" rel="external">Android(安卓)</a></p>
+<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Android基础知识.md" target="_blank" rel="external">Android基础知识</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Android内存泄漏总结.md" target="_blank" rel="external">Android内存泄漏总结</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Handler内存泄漏分析及解决.md" target="_blank" rel="external">Handler内存泄漏分析及解决</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/线程通信基础流程分析.md" target="_blank" rel="external">Handler、Looper、Message、MessageQueue基础流程分析</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Android性能优化.md" target="_blank" rel="external">Android性能优化</a><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Listview详解.md" target="_blank" rel="external">ListView详解</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Recyclerview和Listview的异同.md" target="_blank" rel="external">RecyclerView和ListView的异同</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Asynctask源码分析.md" target="_blank" rel="external">AsyncTask源码分析</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/插件化技术学习.md" target="_blank" rel="external">插件化技术</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/自定义控件.md" target="_blank" rel="external">自定义控件</a></li>
+<li><a href="http://www.jianshu.com/p/e99b5e8bd67b" target="_blank" rel="external">事件分发机制</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/ANR问题.md" target="_blank" rel="external">ANR问题</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Art和Dalvik区别.md" target="_blank" rel="external">Art和Dalvik的区别</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Android关于oom的解决方案.md" target="_blank" rel="external">Android关于OOM的解决方案</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Fragment.md" target="_blank" rel="external">Fragment</a></li>
+<li><a href="https://github.com/xxv/android-lifecycle" target="_blank" rel="external">Activity&amp;Fragment</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/SurfaceView.md" target="_blank" rel="external">SurfaceView</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Android几种进程.md" target="_blank" rel="external">Android几种进程</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/APP启动过程.md" target="_blank" rel="external">APP启动过程</a></li>
+<li>Activity启动流程以及界面展示过程</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Android图片中的三级缓存.md" target="_blank" rel="external">图片三级缓存</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Bitmap的分析与使用.md" target="_blank" rel="external">Bitmap的分析与使用</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/热修复技术.md" target="_blank" rel="external">热修复的原理</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/AIDL.md" target="_blank" rel="external">AIDL</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Binder机制.md" target="_blank" rel="external">Binder机制</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Zygote和System进程的启动过程.md" target="_blank" rel="external">Zygote和System进程的启动过程</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/MVC%2CMVP%2CMVVM的区别.md" target="_blank" rel="external">Android中的MVC，MVP和MVVM</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/MVP.md" target="_blank" rel="external">MVP</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Android开机过程.md" target="_blank" rel="external">Android开机过程</a></li>
+<li><a href="http://www.jianshu.com/p/c1a3a881a144" target="_blank" rel="external">Retrofit源码分析</a></li>
+<li><a href="http://frodoking.github.io/2015/10/10/android-glide/" target="_blank" rel="external">Glide源码分析</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/EventBus用法详解.md" target="_blank" rel="external">EventBus用法详解</a></li>
+<li><a href="http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2538" target="_blank" rel="external">EventBus源码分析</a></li>
+<li><a href="http://www.open-open.com/lib/view/open1438065400878.html" target="_blank" rel="external">Android ORM 框架之 greenDAO 使用心得</a></li>
+<li><a href="http://www.jcodecraeer.com/a/anzhuokaifa/developer/2015/0606/3005.html" target="_blank" rel="external">Data Binding（数据绑定）用户指南</a></li>
+<li><a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="external">RxJava</a></li>
+<li>设计一套图片异步加载缓存方案</li>
+<li>Android UI适配</li>
+<li><a href="http://wuxiaolong.me/categories/Gradle/" target="_blank" rel="external">Gradle</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/查漏补缺.md" target="_blank" rel="external">查漏补缺</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/Android/Git操作.md" target="_blank" rel="external">Git操作</a></li>
+</ul>
+</li>
+</ul>
+<p>=======</p>
+<hr>
+<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/tree/master/Part1/DesignPattern" target="_blank" rel="external">DesignPattern(设计模式)</a></li>
+</ul>
+<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/常见的面向对象设计原则.md" target="_blank" rel="external">面向对象六大原则</a><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/单例模式.md" target="_blank" rel="external">单例模式</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/Builder模式.md" target="_blank" rel="external">Builder模式</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/原型模式.md" target="_blank" rel="external">原型模式</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/简单工厂.md" target="_blank" rel="external">简单工厂</a></li>
+<li>工厂方法模式</li>
+<li>抽象工厂模式</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/策略模式.md" target="_blank" rel="external">策略模式</a></li>
+<li>状态模式</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/责任链模式.md" target="_blank" rel="external">责任链模式</a></li>
+<li>解释器模式</li>
+<li>命令模式</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/观察者模式.md" target="_blank" rel="external">观察者模式</a></li>
+<li>备忘录模式</li>
+<li>迭代器模式</li>
+<li>模板方法模式</li>
+<li>访问者模式</li>
+<li>中介者模式</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/代理模式.md" target="_blank" rel="external">代理模式</a></li>
+<li>组合模式</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/适配器模式.md" target="_blank" rel="external">适配器模式</a></li>
+<li>装饰模式</li>
+<li>享元模式</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part1/DesignPattern/外观模式.md" target="_blank" rel="external">外观模式</a></li>
+<li>桥接模式</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2><ul>
+<li><p><a href="https://github.com/GeniusVJR/LearningNotes/tree/master/Part2/JavaSE" target="_blank" rel="external">JavaSE(Java基础)</a></p>
+<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/Java基础知识.md" target="_blank" rel="external">Java基础知识</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/Java中的内存泄漏.md" target="_blank" rel="external">Java中的内存泄漏</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/String源码分析.md" target="_blank" rel="external">String源码分析</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/Java集合框架.md" target="_blank" rel="external">Java集合框架</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/ArrayList源码剖析.md" target="_blank" rel="external">ArrayList源码剖析</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/LinkedList源码剖析.md" target="_blank" rel="external">LinkedList源码剖析</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/Vector源码剖析.md" target="_blank" rel="external">Vector源码剖析</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/HashMap源码剖析.md" target="_blank" rel="external">HashMap源码剖析</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/HashTable源码剖析.md" target="_blank" rel="external">HashTable源码剖析</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaSE/LinkedHashMap源码剖析.md" target="_blank" rel="external">LinkedHashMap源码剖析</a></li>
+</ul>
+</li>
+<li><p><a href="https://github.com/GeniusVJR/LearningNotes/tree/master/Part2/JVM" target="_blank" rel="external">JVM(Java虚拟机)</a></p>
+<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JVM/JVM.md" target="_blank" rel="external">JVM基础知识</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JVM/JVM类加载机制.md" target="_blank" rel="external">JVM类加载机制</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JVM/Java内存区域与内存溢出.md" target="_blank" rel="external">Java内存区域与内存溢出</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JVM/垃圾回收算法.md" target="_blank" rel="external">垃圾回收算法</a></li>
+</ul>
+</li>
+<li><p><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/Java并发.md" target="_blank" rel="external">JavaConcurrent(Java并发)</a></p>
+<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/Java并发基础知识.md" target="_blank" rel="external">Java并发基础知识</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/生产者和消费者问题.md" target="_blank" rel="external">生产者和消费者问题</a><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/Thread和Runnable实现多线程的区别.md" target="_blank" rel="external">Thread和Runnable实现多线程的区别</a> </li>
+</ul>
+</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/线程中断.md" target="_blank" rel="external">线程中断</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/守护线程与阻塞线程.md" target="_blank" rel="external">守护线程与阻塞线程</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/Synchronized.md" target="_blank" rel="external">synchronized</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/多线程环境中安全使用集合API.md" target="_blank" rel="external">多线程环境中安全使用集合API</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/实现内存可见的两种方法比较：加锁和volatile变量.md" target="_blank" rel="external">实现内存可见的两种方法比较：加锁和volatile变量</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/死锁.md" target="_blank" rel="external">死锁</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/可重入内置锁.md" target="_blank" rel="external">可重入内置锁</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/使用wait:notify:notifyall实现线程间通信.md" target="_blank" rel="external">使用wait/notify/notifyAll实现线程间通信</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/NIO.md" target="_blank" rel="external">NIO</a></li>
+</ul>
+<hr>
+</li>
+</ul>
+<h2 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h2><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/tree/master/Part3/DataStructure" target="_blank" rel="external">DataStructure(数据结构)</a><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/DataStructure/数组.md" target="_blank" rel="external">数组</a></li>
+<li>链表</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/DataStructure/栈和队列.md" target="_blank" rel="external">栈和队列</a></li>
+<li>字符串</li>
+<li>树</li>
+<li>图</li>
+</ul>
+</li>
+<li><p><a href="">Algorithm(算法)</a></p>
+<ul>
+<li><a href="https://github.com/anAngryAnt/LearningNotes/tree/master/Part3/Algorithm/Sort" target="_blank" rel="external">排序</a><ul>
+<li><a href="https://github.com/anAngryAnt/LearningNotes/tree/master/Part3/Algorithm/Sort/选择排序.md" target="_blank" rel="external">选择排序</a></li>
+<li><a href="https://github.com/anAngryAnt/LearningNotes/tree/master/Part3/Algorithm/Sort/冒泡排序.md" target="_blank" rel="external">冒泡排序</a></li>
+<li><a href="https://github.com/anAngryAnt/LearningNotes/tree/master/Part3/Algorithm/Sort/快速排序.md" target="_blank" rel="external">快速排序</a></li>
+<li><a href="https://github.com/anAngryAnt/LearningNotes/tree/master/Part3/Algorithm/Sort/归并排序.md" target="_blank" rel="external">归并排序</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/Sort/%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%9A%84%2010%20%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93.md" target="_blank" rel="external">面试中的十大排序算法总结</a></li>
+</ul>
+</li>
+<li>查找<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/Lookup/顺序查找.md" target="_blank" rel="external">顺序查找</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/Lookup/折半查找.md" target="_blank" rel="external">折半查找</a></li>
+</ul>
+</li>
+<li>《剑指Offer》<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/剑指Offer/1.七种方式实现singleton模式.md" target="_blank" rel="external">面试题2:实现Singleton模式</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/剑指Offer/面试题6：重建二叉树.md" target="_blank" rel="external">面试题6：重建二叉树</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/剑指Offer/面试题11：数值的整数次方.md" target="_blank" rel="external">面试题11：数值的整数次方</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/剑指Offer/面试题44：扑克牌的顺子.md" target="_blank" rel="external">面试题44：扑克牌的顺子</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/剑指Offer/面试题45：圆圈中最后剩下的数字.md" target="_blank" rel="external">面试题45：圆圈中最后剩下的数字</a></li>
+</ul>
+</li>
+<li>《程序员面试金典》</li>
+<li>《LeetCode》<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/LeetCode/two-sum.md" target="_blank" rel="external">two-sum</a></li>
+</ul>
+</li>
+<li>《程序员代码面试指南(左程云)》<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/程序员代码面试指南(左程云" target="_blank" rel="external">1.设计一个有getMin功能的栈</a>/1.设计一个有getMin功能的栈.md)</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/程序员代码面试指南(左程云" target="_blank" rel="external">2.由两个栈组成的队列</a>/2.由两个栈组成的队列.md)</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part3/Algorithm/程序员代码面试指南(左程云" target="_blank" rel="external">3.如何仅用递归函数和栈操作逆序一个栈</a>/3.如何仅用递归函数和栈操作逆序一个栈.md)</li>
+</ul>
+</li>
+</ul>
+<hr>
+</li>
+</ul>
+<h2 id="第四部分"><a href="#第四部分" class="headerlink" title="第四部分"></a>第四部分</h2><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/tree/master/Part4/Network" target="_blank" rel="external">Network(网络)</a><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part4/Network/TCP与UDP.md" target="_blank" rel="external">TCP/UDP</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part4/Network/Http协议.md" target="_blank" rel="external">HTTP</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part4/Network/Socket.md" target="_blank" rel="external">Socket</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part4/Network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E6%B1%87%E6%80%BB.md" target="_blank" rel="external">计算机网络基础汇总</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part4/OperatingSystem/操作系统.md" target="_blank" rel="external">OperatingSystem(操作系统)</a><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part4/OperatingSystem/Linux系统的IPC.md" target="_blank" rel="external">Linux系统的IPC</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="第五部分"><a href="#第五部分" class="headerlink" title="第五部分"></a>第五部分</h2><ul>
+<li><p><a href="https://github.com/GeniusVJR/LearningNotes/tree/master/Part5/ReadingNotes" target="_blank" rel="external">ReadingNotes(读书笔记)</a></p>
+<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《APP研发录》第1章读书笔记.md" target="_blank" rel="external">《APP研发录》第1章读书笔记</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《APP研发录》第2章读书笔记.md" target="_blank" rel="external">《APP研发录》第2章读书笔记</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《Android开发艺术探索》第一章笔记.md" target="_blank" rel="external">《Android开发艺术探索》第一章笔记</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《Android开发艺术探索》第二章笔记.md" target="_blank" rel="external">《Android开发艺术探索》第二章笔记</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《Android开发艺术探索》第三章笔记.md" target="_blank" rel="external">《Android开发艺术探索》第三章笔记</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《Android开发艺术探索》第四章笔记.md" target="_blank" rel="external">《Android开发艺术探索》第四章笔记</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《Android开发艺术探索》第八章笔记.md" target="_blank" rel="external">《Android开发艺术探索》第八章笔记</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《Android开发艺术探索》第十五章笔记.md" target="_blank" rel="external">《Android开发艺术探索》第十五章笔记</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《深入理解java虚拟机》第12章.md" target="_blank" rel="external">《深入理解Java虚拟机》第12章</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《Java编程思想》第一章读书笔记.md" target="_blank" rel="external">《Java编程思想》第一章读书笔记</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/ReadingNotes/《Java编程思想》第二章读书笔记.md" target="_blank" rel="external">《Java编程思想》第二章读书笔记</a></li>
+</ul>
+</li>
+<li><p><a href="https://github.com/GeniusVJR/LearningNotes/tree/master/Part5/Project" target="_blank" rel="external">Project(项目)</a></p>
+<ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part5/Project/项目.md" target="_blank" rel="external">项目难点</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="第六部分"><a href="#第六部分" class="headerlink" title="第六部分"></a>第六部分</h2><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/tree/master/Part6/InterviewExperience" target="_blank" rel="external">InterviewExperience(面试经验)</a><ul>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part6/InterviewExperience/Alibaba.md" target="_blank" rel="external">Alibaba</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part6/InterviewExperience/美团.md" target="_blank" rel="external">美团</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part6/InterviewExperience/豌豆荚.md" target="_blank" rel="external">豌豆荚</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part6/InterviewExperience/蜻蜓FM.md" target="_blank" rel="external">蜻蜓FM</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part6/InterviewExperience/新浪微博.md" target="_blank" rel="external">新浪微博</a></li>
+<li><a href="https://github.com/GeniusVJR/LearningNotes/blob/master/Part6/InterviewExperience/网易杭研.md" target="_blank" rel="external">网易杭研</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/02/22/Android基础资料/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/02/22/Android基础资料/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//lvtanxi.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/07/Spring-boot部署外部tomcat/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/01/23/Android-WebView设置Cookie/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="吕檀溪's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        lvtanxi@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:lvtanxi@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android笔记/">Android笔记<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Git笔记/">Git笔记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/NodeJs/">NodeJs<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Redis/">Redis<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Spring-boot/">Spring-boot<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据库/">数据库<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">22</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo">
+        </a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/5121900660/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.svg);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/lvtanxi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;檀溪博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//lvtanxi.disqus.com/count.js" async></script>
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

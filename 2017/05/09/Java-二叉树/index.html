@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java-二叉树 | 
+        
+        檀溪博客
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="吕檀溪">
+    <meta name="description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    <meta name="keywords" content="吕檀溪 檀溪 檀溪博客">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="檀溪博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java-二叉树 | 檀溪博客">
+    <meta property="og:description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#树的标准定义："><span class="post-toc-number">1.</span> <span class="post-toc-text">树的标准定义：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#树具有以下特点："><span class="post-toc-number">2.</span> <span class="post-toc-text">树具有以下特点：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于树的一些术语"><span class="post-toc-number">3.</span> <span class="post-toc-text">关于树的一些术语</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二叉树"><span class="post-toc-number">4.</span> <span class="post-toc-text">二叉树</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二叉树的遍历"><span class="post-toc-number">5.</span> <span class="post-toc-text">二叉树的遍历</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二叉树的java实现"><span class="post-toc-number">6.</span> <span class="post-toc-text">二叉树的java实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Java实现代码："><span class="post-toc-number">7.</span> <span class="post-toc-text">Java实现代码：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#尾声"><span class="post-toc-number">8.</span> <span class="post-toc-text">尾声</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java-二叉树
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>吕檀溪</strong>
+        <span>5月 09, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java-二叉树&url=http://yoursite.com//2017/05/09/Java-二叉树/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/05/09/Java-二叉树/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/05/09/Java-二叉树/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/05/09/Java-二叉树/index.html&title=Java-二叉树" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=檀溪博客&title=Java-二叉树&summary=人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/05/09/Java-二叉树/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/05/09/Java-二叉树/index.html&text=Java-二叉树" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>无论是链表，栈还是队列，它们都是线性结构的，每个节点的左边最多一个节点，右边也最多一个节点。对于大量的输入数据，线性表的访问时间太长，效率较低，不宜使用。<br>  因此需要一种非线性的数据结构，树型结构，其大部分操作的运行时间平均为O(logN)。<br>  在计算机科学中，树是非常有用的抽象概念。我们形象的去描述一棵树，一个家族的祖父有两个儿子，这两个儿子一个有一个儿子，一个有三个儿子，像这样发展下去的一个族谱，就是一个树，如图:<br>  <img src="/assets/tree.png" alt=""><br>  就像一棵真正的树一样，我们把祖父称为树根，两个儿子是分叉开的两个树枝，这两棵树枝可以继续向下分成N个树枝，循环下去，一直到长出叶子为止。<br>  我们把祖父或者树根称为根root节点，祖父的儿子称为子节点，每个儿子作为根节点又可以形成一棵树，我们把这样的树称为根节点的子树。</p>
+</blockquote>
+<h2 id="树的标准定义："><a href="#树的标准定义：" class="headerlink" title="树的标准定义："></a>树的标准定义：</h2><p>树tree是包含n(n&gt;0)个节点的有穷集合，其中：</p>
+<ol>
+<li>每个元素称为节点(Node)</li>
+<li>有一个特定的节点被称为根节点或树根(RootNode)</li>
+<li>除根节点之外的其余数据元素被分为m(m&gt;=0)个互不相交的结合T1,T2…Tm-1,其中每个几个T1本身也是一棵树，被称作原树的子树(SubTree)</li>
+</ol>
+<h2 id="树具有以下特点："><a href="#树具有以下特点：" class="headerlink" title="树具有以下特点："></a>树具有以下特点：</h2><ol>
+<li>每个节点有零个或者多个子节点</li>
+<li>每个子节点只有一个父节点</li>
+<li>没有父节点的节点被称为根节点</li>
+</ol>
+<h2 id="关于树的一些术语"><a href="#关于树的一些术语" class="headerlink" title="关于树的一些术语"></a>关于树的一些术语</h2><ul>
+<li>节点的度：一个节点含有的子树的个数称为该节点的度</li>
+<li>叶子节点或终端节点：度为零的节点称为叶节点</li>
+<li>非终端节点或者分支节点：度不为零的节点</li>
+<li>父节点：如果一个节点含有子节点，则这个节点称为其子节点的父节点</li>
+<li>子节点：一个节点含有的子树的根节点被称为该节点的子节点</li>
+<li>兄弟节点：具有相同父节点的节点互称为兄弟节点</li>
+<li>树的高度：定义一棵树的根节点层次为1，其他节点的层次是其父节点层次+1.一棵树中所有节点的层次的最大值称为这棵树的深度</li>
+<li>节点层次：从跟开始定义起，根为第1层，根的子节点为第2层，一次类推</li>
+<li>节点的祖先：从根节点到该节点所经分支上的所有节点</li>
+<li>子孙：以某节点为根的子树中任一节点都被称为该节点的子孙</li>
+</ul>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><blockquote>
+<p>二叉树作为树的一种具体的表现形式，也是树的一个重要的类型。许多实际问题抽象出来的数据结构往往是二叉树的形式，即使是一般的树也能简单地转换为二叉树，而且二叉树的存储结构及其算法都较为简单，因此二叉树显得特别重要。<br>    二叉树(BinaryTree)是n(n≥0)个结点的有限集，它或者是空集(n=0)，或者由一个根结点及两棵互不相交的、分别称作这个根的左子树和右子树的二叉树组成。 这个定义是递归的。由于左、右子树也是二叉树， 因此子树也可为空树。<br>    下图中展现了五种不同基本形态的二叉树<br>    <img src="/assets/binary_tree.jpg" alt=""><br>其中</p>
+<ul>
+<li>(a)为空树</li>
+<li>(b)为仅有一个节点的二叉树</li>
+<li>(c)为仅有左节点的二叉树</li>
+<li>(d)为仅有右节点的二叉树</li>
+<li>(e)为左右都有节点的二叉树</li>
+</ul>
+</blockquote>
+<p>需要特别注意的是：<strong>二叉树的左子树和右子树是严格区分并且不能随意颠倒的，而且左子节点的数值要小于父节点，右子节点的数值要大于父节点</strong></p>
+<h2 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h2><blockquote>
+<p>对于二叉树来讲最主要、最基本的运算就是遍历。遍历二叉树是指以一定的次序访问二叉树的每一个节点。遍历二叉树的过程实质是把二叉树的节点进行线性排序的工程。</p>
+</blockquote>
+<h2 id="二叉树的java实现"><a href="#二叉树的java实现" class="headerlink" title="二叉树的java实现"></a>二叉树的java实现</h2><blockquote>
+<p>要想遍历，我们则需要创建二叉树首先创建一棵二叉树如下图，然后对这颗二叉树进行遍历操作（遍历操作的实现分为递归实现和非递归实现），同时还提供一些方法如获取双亲结点、获取左孩子、右孩子等。<br><img src="/assets/create_binary_tree.jpg" alt=""></p>
+</blockquote>
+<h2 id="Java实现代码："><a href="#Java实现代码：" class="headerlink" title="Java实现代码："></a>Java实现代码：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 二叉树的增，删，改，查</div><div class="line"> * </div><div class="line"> * @author Administrator</div><div class="line"> * </div><div class="line"> */</div><div class="line">public class BinaryTree &#123;</div><div class="line"></div><div class="line">	// 定义一个节点的数据结构()</div><div class="line">	private class Node &#123;</div><div class="line">		Node parent;// 父节点</div><div class="line">		Node left; // 左儿子</div><div class="line">		Node right; // 右儿子</div><div class="line">		Object data; // 任意类型的数据</div><div class="line"></div><div class="line">		public Node(Object data) &#123;</div><div class="line">			this.data = data;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	private Node root;// 定义一个根节点</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * &lt;一&gt;.二叉树的添加功能</div><div class="line">	 * </div><div class="line">	 * @param data</div><div class="line">	 *            data： 为要添加的数据</div><div class="line">	 */</div><div class="line">	public void add(Object data) &#123;</div><div class="line">		// 首先判断是否包含该数据</div><div class="line">		if (contains(data)) &#123;</div><div class="line">			// 如果包含</div><div class="line">			return;</div><div class="line">		&#125;</div><div class="line">		// 1.把要添加的数据放到节点中</div><div class="line">		Node node = new Node(data);</div><div class="line">		node.data=data;</div><div class="line">		// 2.把节点链接到二叉树中</div><div class="line">		// 是否有根节点</div><div class="line">		if (root == null) &#123;</div><div class="line">			root = node;// 把该节点保存到根节点中去</div><div class="line">		&#125; else &#123;</div><div class="line">			// 如果跟节点不为空</div><div class="line">			// 找父节点，比较字节与父节点的值，如果比父节点小放左边，如果比父节点大放右边</div><div class="line">			// 从根节点开始查找</div><div class="line">			Node parent = findParent(data, root);</div><div class="line">			// 设置新增节点的父节点为查找到的节点</div><div class="line">			node.parent = parent;</div><div class="line">			// 把新增加的节点放在找到的父节点的左边还是右边还需要判断与父节点的大小</div><div class="line">			if (compare(data, parent.data)) &#123;</div><div class="line">				// 如果比父节点大，放在父节点的右边</div><div class="line">				parent.right = node;</div><div class="line">			&#125; else &#123;</div><div class="line">				parent.left = node;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 * @param data</div><div class="line">	 *            传递的数据</div><div class="line">	 * @param currentNode</div><div class="line">	 *            从哪个节点开始查找 return ：返回的是父节点的值</div><div class="line">	 */</div><div class="line">	private Node findParent(Object data, Node currentNode) &#123;</div><div class="line">		// 从哪个节点开始查找</div><div class="line">		Node temp = currentNode;</div><div class="line">		Node parent = currentNode;</div><div class="line">		while (temp != null) &#123;</div><div class="line">			// 把临时的节点复制给父节点</div><div class="line">			parent = temp;</div><div class="line">			// 比较待添加的数据和父节点的大小</div><div class="line">			if (compare(data, temp.data)) &#123;</div><div class="line">				// 如果待添加的节点大于当前节点的话</div><div class="line">				temp = temp.right;</div><div class="line"></div><div class="line">			&#125; else &#123;</div><div class="line">				// 小于当前的节点</div><div class="line">				temp = temp.left;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		return parent;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 * @param o1</div><div class="line">	 *            第一个值</div><div class="line">	 * @param o2</div><div class="line">	 *            第二个值</div><div class="line">	 * @return 如果o1 &gt; o2 返回结果为true，否则返回为false</div><div class="line">	 */</div><div class="line">	public boolean compare(Object o1, Object o2) &#123;</div><div class="line">		boolean res = false;</div><div class="line">		// 判断o1有没有实现比较器</div><div class="line">		if (o1 instanceof Comparable) &#123;</div><div class="line">			Comparable c1 = (Comparable) o1;</div><div class="line">			Comparable c2 = (Comparable) o2;</div><div class="line">			if (c1.compareTo(c2) &gt; 0) &#123;</div><div class="line">				res = true;</div><div class="line">			&#125; else &#123;</div><div class="line">				// 默认值就是true</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125; else &#123;</div><div class="line">			// 没有实现比较器</div><div class="line">			res = o1.toString().compareTo(o2.toString()) &gt; 0 ? true : false;</div><div class="line">		&#125;</div><div class="line">		return res;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * &lt;二&gt;、二叉树的删除操作</div><div class="line">	 * </div><div class="line">	 * @param data：传入要删除的数据</div><div class="line">	 */</div><div class="line">	public void remove(Object data) &#123;</div><div class="line">		// 1.查找数据是否存在</div><div class="line">		Node temp = find(data);</div><div class="line">		// 2.如果存在：找到数据节点</div><div class="line">		if (temp != null) &#123;</div><div class="line">			// 存在</div><div class="line">			// 3.删除节点（1，待删除的节点为 根节点 和 非根节点）</div><div class="line"></div><div class="line">			// 1.删除的节点是根节点：</div><div class="line">			if (temp == root) &#123;</div><div class="line">				// 11.没有儿子</div><div class="line">				if (temp.left == null &amp;&amp; temp.right == null) &#123;</div><div class="line">					root = null;</div><div class="line">				&#125; else if (temp.right == null) &#123;</div><div class="line">					// 12.只有左儿子</div><div class="line">					root = root.left;</div><div class="line">					root.parent = null;</div><div class="line">				&#125; else if (temp.left == null) &#123;</div><div class="line">					// 13.只有右儿子</div><div class="line">					root = root.right;</div><div class="line">					root.parent = null;</div><div class="line">				&#125; else &#123;</div><div class="line">					// 14.两个儿子都有</div><div class="line">					// 我们这里保留左儿子（也可以保留右儿子）</div><div class="line">					Node left = getLeft(temp);</div><div class="line">					root = left;</div><div class="line">					root.parent = null;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">			&#125; else &#123;</div><div class="line">				// 2.删除的节点是非根节点</div><div class="line"></div><div class="line">				// 21.没有儿子(叶子节点)</div><div class="line">				if (temp.left == null &amp;&amp; temp.right == null) &#123;</div><div class="line">					if (compare(temp.data, temp.parent.data)) &#123;</div><div class="line">						// 在父节点的右边，右叶子节点</div><div class="line">						temp.parent.right = null;</div><div class="line">					&#125; else &#123;</div><div class="line">						temp.parent.left = null;</div><div class="line">					&#125;</div><div class="line"></div><div class="line">				&#125; else if (temp.right == null) &#123;</div><div class="line">					// 22.只有左儿子</div><div class="line">					if (compare(temp.data, temp.parent.data)) &#123;</div><div class="line">						// 删除的节点在父节点的右边</div><div class="line">						temp.parent.right = temp.left;</div><div class="line">						temp.left.parent = temp.parent;</div><div class="line">					&#125; else &#123;</div><div class="line">						// 在父节点左边</div><div class="line">						temp.parent.left = temp.left;</div><div class="line">						temp.left.parent = temp.parent;</div><div class="line">					&#125;</div><div class="line">				&#125; else if (temp.left == null) &#123;</div><div class="line">					// 23 只有右儿子</div><div class="line">					if (compare(temp.data, temp.parent.data)) &#123;</div><div class="line">						// 在父节点右边</div><div class="line">						temp.parent.right = temp.right;</div><div class="line">						temp.right.parent = temp.parent;</div><div class="line">					&#125; else &#123;</div><div class="line">						// 在父节点左边</div><div class="line">						temp.parent.left = temp.right;</div><div class="line">						temp.right.parent = temp.parent;</div><div class="line">					&#125;</div><div class="line">				&#125; else &#123;</div><div class="line">					// 24.两个儿子都有</div><div class="line">					Node left = getLeft(temp);</div><div class="line">					// 上面还有父节点（爷爷节点）</div><div class="line">					if (compare(left.data, temp.parent.data)) &#123;</div><div class="line">						// 比爷爷节点大</div><div class="line">						temp.parent.right = left;</div><div class="line">						left.parent = temp.parent;</div><div class="line"></div><div class="line">					&#125; else &#123;</div><div class="line">						// 比爷爷节点小</div><div class="line">						temp.parent.left = left;</div><div class="line">						left.parent = temp.parent;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * &lt;四&gt; 更新数据</div><div class="line">	 * </div><div class="line">	 * @param oldData</div><div class="line">	 *            老数据</div><div class="line">	 * @param newData</div><div class="line">	 *            新数据</div><div class="line">	 */</div><div class="line">	public void update(Object oldData, Object newData) &#123;</div><div class="line">		remove(oldData);</div><div class="line">		add(newData);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 * @param node:</div><div class="line">	 *            要删除的节点</div><div class="line">	 * @return 返回的是左儿子节点</div><div class="line">	 */</div><div class="line">	private Node getLeft(Node node) &#123;</div><div class="line">		// 保留左儿子</div><div class="line">		Node left = node.left;</div><div class="line">		// 处理右节点</div><div class="line">		// 寻找右节点的新的爹(从左节点开始找)</div><div class="line">		Node rightNewParrent = findParent(node.right.data, left);</div><div class="line">		rightNewParrent.right = node.right;</div><div class="line">		node.right.parent = rightNewParrent;</div><div class="line"></div><div class="line">		return left;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * &lt;三&gt;、二叉树的查询 操作</div><div class="line">	 * </div><div class="line">	 * @param data</div><div class="line">	 *            传入的数据</div><div class="line">	 * @return 返回该数据的节点</div><div class="line">	 */</div><div class="line">	private Node find(Object data) &#123;</div><div class="line">		// 从跟节点开始查找</div><div class="line">		Node temp = root;</div><div class="line">		while (temp != null) &#123;</div><div class="line">			// 判断数据</div><div class="line">			if (data.equals(temp.data) &amp;&amp; data.hashCode() == temp.data.hashCode()) &#123;</div><div class="line">				// 找到了数据</div><div class="line">				break;</div><div class="line"></div><div class="line">			&#125; else if (compare(data, temp.data)) &#123;</div><div class="line">				// 如果查找的数据比临时的数据大的话，从右边找</div><div class="line">				temp = temp.right;</div><div class="line"></div><div class="line">			&#125; else &#123;</div><div class="line">				temp = temp.left;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		return temp;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * 判断跟节点是否为空</div><div class="line">	 * </div><div class="line">	 * @return 返回根节点是否为空</div><div class="line">	 */</div><div class="line">	public boolean isEmpty() &#123;</div><div class="line">		return root == null;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 树的高度</div><div class="line">	public int height() &#123;</div><div class="line">		return height(root);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * 计算二叉树节点的高度</div><div class="line">	 * </div><div class="line">	 * @param subTree</div><div class="line">	 *            节点</div><div class="line">	 * @return 节点高度</div><div class="line">	 */</div><div class="line">	private int height(Node subTree) &#123;</div><div class="line">		if (subTree == null)</div><div class="line">			return 0;// 递归结束：空树高度为0</div><div class="line">		else &#123;</div><div class="line">			int i = height(subTree.left);</div><div class="line">			int j = height(subTree.right);</div><div class="line">			return (i &lt; j) ? (j + 1) : (i + 1);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 返回双亲结点</div><div class="line">	public Node parent(Node element) &#123;</div><div class="line">		return (root == null || root == element) ? null : parent(root, element);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public Node parent(Node subTree, Node element) &#123;</div><div class="line">		if (subTree == null)</div><div class="line">			return null;</div><div class="line">		if (subTree.left == element || subTree.right == element)</div><div class="line">			// 返回父结点地址</div><div class="line">			return subTree;</div><div class="line">		Node p;</div><div class="line">		// 现在左子树中找，如果左子树中没有找到，才到右子树去找</div><div class="line">		if ((p = parent(subTree.left, element)) != null)</div><div class="line">			// 递归在左子树中搜索</div><div class="line">			return p;</div><div class="line">		else</div><div class="line">			// 递归在右子树中搜索</div><div class="line">			return parent(subTree.right, element);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * 计算节点大小</div><div class="line">	 * </div><div class="line">	 * @param subTree</div><div class="line">	 *            节点</div><div class="line">	 * @return 节点大小</div><div class="line">	 */</div><div class="line">	private int size(Node subTree) &#123;</div><div class="line">		if (subTree == null) &#123;</div><div class="line">			return 0;</div><div class="line">		&#125; else &#123;</div><div class="line">			return 1 + size(subTree.left) + size(subTree.right);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * @param data</div><div class="line">	 * @return 是否包含该数据</div><div class="line">	 */</div><div class="line">	public boolean contains(Object data) &#123;</div><div class="line"></div><div class="line">		return null != find(data);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 在释放某个结点时，该结点的左右子树都已经释放，</div><div class="line">	// 所以应该采用后续遍历，当访问某个结点时将该结点的存储空间释放</div><div class="line">	public void destroy(Node subTree) &#123;</div><div class="line">		// 删除根为subTree的子树</div><div class="line">		if (subTree != null) &#123;</div><div class="line">			// 删除左子树</div><div class="line">			destroy(subTree.left);</div><div class="line">			// 删除右子树</div><div class="line">			destroy(subTree.right);</div><div class="line">			// 删除根结点</div><div class="line">			subTree = null;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * 递归打印数据</div><div class="line">	 */</div><div class="line">	public void traverse(Node subTree) &#123;</div><div class="line">		visted(subTree);</div><div class="line">		if (subTree != null) &#123;</div><div class="line">			traverse(subTree.left);</div><div class="line">			traverse(subTree.right);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public Node getRoot() &#123;</div><div class="line">		return root;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 前序遍历</div><div class="line">	public void preOrder(Node subTree) &#123;</div><div class="line">		if (subTree != null) &#123;</div><div class="line">			visted(subTree);</div><div class="line">			preOrder(subTree.left);</div><div class="line">			preOrder(subTree.right);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 中序遍历</div><div class="line">	public void inOrder(Node subTree) &#123;</div><div class="line">		if (subTree != null) &#123;</div><div class="line">			inOrder(subTree.left);</div><div class="line">			visted(subTree);</div><div class="line">			inOrder(subTree.right);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// 后续遍历</div><div class="line">	public void postOrder(Node subTree) &#123;</div><div class="line">		if (subTree != null) &#123;</div><div class="line">			postOrder(subTree.left);</div><div class="line">			postOrder(subTree.right);</div><div class="line">			visted(subTree);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void visted(Node subTree) &#123;</div><div class="line">		if(null!=subTree)</div><div class="line">			System.out.println(&quot;--data:&quot; + subTree.data);;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>对二叉树进行测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class TestBinaryTree &#123;</div><div class="line">	/**</div><div class="line">	 * 对二叉树进行测试</div><div class="line">	 * </div><div class="line">	 * @param args</div><div class="line">	 */</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		BinaryTree tree = new BinaryTree();</div><div class="line">		int[] datas = &#123; 55, 33, 44, 88, 66, 99 &#125;;</div><div class="line">		for (int i : datas) &#123;</div><div class="line">			tree.add(i);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		// 打印二叉树总的数据</div><div class="line">		tree.traverse(tree.getRoot());</div><div class="line">		System.out.println(tree.height());</div><div class="line">		/*// 测试删除</div><div class="line">		tree.remove(33);</div><div class="line">		tree.traverse(tree.getRoot());</div><div class="line"></div><div class="line">		// 测试更新</div><div class="line">		tree.update(44, 77);</div><div class="line">		System.out.println();</div><div class="line">		tree.traverse(tree.getRoot());*/</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><blockquote>
+<p>我这里只是讲解了二叉树的一小部分的东西。具体的还可以参考<a href="http://www.jianshu.com/p/0190985635eb" target="_blank" rel="external">《一篇文章搞定面试中的二叉树题目(java实现)》</a></p>
+</blockquote>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/05/09/Java-二叉树/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/05/09/Java-二叉树/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//lvtanxi.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/05/17/Java-Thread/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/05/08/NodeJS与Sequelize操作MySql/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="吕檀溪's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        lvtanxi@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:lvtanxi@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android笔记/">Android笔记<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Git笔记/">Git笔记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/NodeJs/">NodeJs<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Redis/">Redis<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Spring-boot/">Spring-boot<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据库/">数据库<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">22</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo">
+        </a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/5121900660/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.svg);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/lvtanxi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;檀溪博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//lvtanxi.disqus.com/count.js" async></script>
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

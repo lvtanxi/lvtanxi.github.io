@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Golang-基础 | 
+        
+        檀溪博客
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="吕檀溪">
+    <meta name="description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    <meta name="keywords" content="吕檀溪 檀溪 檀溪博客">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="檀溪博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Golang-基础 | 檀溪博客">
+    <meta property="og:description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Go的特点"><span class="post-toc-number">1.</span> <span class="post-toc-text">Go的特点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Go本地官网"><span class="post-toc-number">2.</span> <span class="post-toc-text">Go本地官网</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Go关键字"><span class="post-toc-number">3.</span> <span class="post-toc-text">Go关键字</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Go的可见性规则"><span class="post-toc-number">4.</span> <span class="post-toc-text">Go的可见性规则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Go的基本数据类型"><span class="post-toc-number">5.</span> <span class="post-toc-text">Go的基本数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在Golang中还有其他数据类型："><span class="post-toc-number">5.0.1.</span> <span class="post-toc-text">在Golang中还有其他数据类型：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量声明与赋值"><span class="post-toc-number">5.0.2.</span> <span class="post-toc-text">变量声明与赋值</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量的类型转换"><span class="post-toc-number">5.0.3.</span> <span class="post-toc-text">变量的类型转换</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计数器iota"><span class="post-toc-number">6.</span> <span class="post-toc-text">计数器iota</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运算符"><span class="post-toc-number">7.</span> <span class="post-toc-text">运算符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#判断语句-if"><span class="post-toc-number">8.</span> <span class="post-toc-text">判断语句 if</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#循环语句-for"><span class="post-toc-number">9.</span> <span class="post-toc-text">循环语句 for</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择语句-switch"><span class="post-toc-number">10.</span> <span class="post-toc-text">选择语句 switch</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#跳转语句-goto-、break、continue"><span class="post-toc-number">11.</span> <span class="post-toc-text">跳转语句 goto 、break、continue</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组-Array"><span class="post-toc-number">12.</span> <span class="post-toc-text">数组 Array</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#切片Slice"><span class="post-toc-number">13.</span> <span class="post-toc-text">切片Slice</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#集合-Map"><span class="post-toc-number">14.</span> <span class="post-toc-text">集合 Map</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数function"><span class="post-toc-number">15.</span> <span class="post-toc-text">函数function</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#defer"><span class="post-toc-number">16.</span> <span class="post-toc-text">defer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结构struct"><span class="post-toc-number">17.</span> <span class="post-toc-text">结构struct</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方法method"><span class="post-toc-number">18.</span> <span class="post-toc-text">方法method</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口interface"><span class="post-toc-number">19.</span> <span class="post-toc-text">接口interface</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类型断言"><span class="post-toc-number">19.1.</span> <span class="post-toc-text">类型断言</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#并发concurrency"><span class="post-toc-number">20.</span> <span class="post-toc-text">并发concurrency</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Channel"><span class="post-toc-number">21.</span> <span class="post-toc-text">Channel</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Select"><span class="post-toc-number">22.</span> <span class="post-toc-text">Select</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#make、、new操作"><span class="post-toc-number">23.</span> <span class="post-toc-text">make、、new操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意"><span class="post-toc-number">24.</span> <span class="post-toc-text">注意</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Golang-基础
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>吕檀溪</strong>
+        <span>9月 29, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Golang-基础&url=http://yoursite.com//2017/09/29/Golang-基础/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/09/29/Golang-基础/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/09/29/Golang-基础/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/09/29/Golang-基础/index.html&title=Golang-基础" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=檀溪博客&title=Golang-基础&summary=人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/09/29/Golang-基础/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/09/29/Golang-基础/index.html&text=Golang-基础" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="Go的特点"><a href="#Go的特点" class="headerlink" title="Go的特点"></a>Go的特点</h2><ol>
+<li>类型安全和内存安全</li>
+<li>以非常直观和极低代价的方案实现高并发</li>
+<li>高效的垃圾回收机制</li>
+<li>快速编译</li>
+<li>为多核计算机提供性能提升的方案</li>
+<li>支持UTF-8编码</li>
+</ol>
+<h2 id="Go本地官网"><a href="#Go本地官网" class="headerlink" title="Go本地官网"></a>Go本地官网</h2><blockquote>
+<p>godoc -http=:8080 然后访问<a href="http://localhost:8080/" target="_blank" rel="external">官网</a>也就是<a href="http://localhost:8080/就可以查看所有文档了" target="_blank" rel="external">http://localhost:8080/就可以查看所有文档了</a></p>
+</blockquote>
+<h2 id="Go关键字"><a href="#Go关键字" class="headerlink" title="Go关键字"></a>Go关键字</h2><blockquote>
+<p>break、default、func、interace、select、case、defer、go、map、struct、chan、else、goto、package、switch、const、fallthrough、if、range、type、continue、for、import、return、var</p>
+</blockquote>
+<h2 id="Go的可见性规则"><a href="#Go的可见性规则" class="headerlink" title="Go的可见性规则"></a>Go的可见性规则</h2><blockquote>
+<p>Go语言中，使用大小写来决定常量、变量、类型、接口、结构的可见性。其中首字母小写即为private，首字母大写为public，需要注意的是，在Golang中可以用中文作为类型或者变量名，但是不建议使用。</p>
+</blockquote>
+<h2 id="Go的基本数据类型"><a href="#Go的基本数据类型" class="headerlink" title="Go的基本数据类型"></a>Go的基本数据类型</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>长度</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>布尔型(bool)</td>
+<td>1字节</td>
+<td>不可用数字代表true或者false</td>
+</tr>
+<tr>
+<td>整型(int/uint)</td>
+<td>根据运行平台可能为32或63位</td>
+<td></td>
+</tr>
+<tr>
+<td>8位整型(int8/uint8)</td>
+<td>1字节</td>
+<td>取值范围为-128~127/0~255</td>
+</tr>
+<tr>
+<td>16位整型(int16/uint16)</td>
+<td>2字节</td>
+<td>取值范围为-32768~32767/0~65535</td>
+</tr>
+<tr>
+<td>32位整型(int32=rune/uint32)</td>
+<td>4字节</td>
+<td>取值范围为-2^32/2~2^32/2-1/0~2^32-1</td>
+</tr>
+<tr>
+<td>64位整型(int64/uint64)</td>
+<td>8字节</td>
+<td>取值范围为-2^62/2~@^64/2-1/0~2^64-1</td>
+</tr>
+<tr>
+<td>浮点型(float32/float64)</td>
+<td>4/8字节</td>
+<td>精确到7/15小数位</td>
+</tr>
+<tr>
+<td>字节型(byte)</td>
+<td>1字节</td>
+<td>别名uint8</td>
+</tr>
+<tr>
+<td>复数(complex64/complex128)</td>
+<td>8/16字节</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="在Golang中还有其他数据类型："><a href="#在Golang中还有其他数据类型：" class="headerlink" title="在Golang中还有其他数据类型："></a>在Golang中还有其他数据类型：</h4><ol>
+<li>足够保存指针的32或64位整数型：uniptr</li>
+<li>array、struct、string</li>
+<li>slice、map、chan</li>
+<li>接口与函数</li>
+</ol>
+<h4 id="变量声明与赋值"><a href="#变量声明与赋值" class="headerlink" title="变量声明与赋值"></a>变量声明与赋值</h4><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>表达式</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变量的申明格式</td>
+<td>var 变量名称 数据类型</td>
+<td>var name string</td>
+</tr>
+<tr>
+<td>变量的赋值格式</td>
+<td>变量名称 = 表达式</td>
+<td>name = “jaychou”</td>
+</tr>
+<tr>
+<td>变量的申明赋值格式</td>
+<td>var 变量名称 [数据类型]=表达式</td>
+<td>var name [string] = “jaychou”</td>
+</tr>
+<tr>
+<td>最简化的申明赋值格式</td>
+<td>变量名 := 表达式</td>
+<td>name := “jaychou”</td>
+</tr>
+<tr>
+<td>多个变量的申明</td>
+<td>变量名，变量名…:=表达式，表达式…</td>
+<td>aa,bb := 1,”我是你爸爸”</td>
+</tr>
+</tbody>
+</table>
+<h4 id="变量的类型转换"><a href="#变量的类型转换" class="headerlink" title="变量的类型转换"></a>变量的类型转换</h4><blockquote>
+<p>Go中不存在隐式转换，所有类型转换必须显示申明，转换只能发生在两种数据相互兼容的类型之间，如：<vaulea>[:]=<typeofvaluea>(<valueb>)。这里需要注意的是string()表示将数据转化成文本格式，因为计算机中存储的任何东西本质都是数字，因此string(65)这种会转变成相对于的字母A，这种我们想要得到”65”则需要strconv.Itoa(65)</valueb></typeofvaluea></vaulea></p>
+</blockquote>
+<h2 id="计数器iota"><a href="#计数器iota" class="headerlink" title="计数器iota"></a>计数器iota</h2><blockquote>
+<p>iota是常量的计数器，从0开始，组中每定义1个常量就自动递增1，通过iota与初始化规则可以大到枚举的效果：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">const(</div><div class="line">    //第一个常量不可省略表达式</div><div class="line">    Monday = iota</div><div class="line">    Tuesady</div><div class="line">    Webnesday</div><div class="line">    Thursday</div><div class="line">    Friday</div><div class="line">    Saturday</div><div class="line">    Sunday</div><div class="line">)</div><div class="line"></div><div class="line">//结果是0-6</div><div class="line"></div><div class="line">const (</div><div class="line">	xa =&quot;A&quot;</div><div class="line">	xb</div><div class="line">	xc = iota</div><div class="line">	xd</div><div class="line">)</div><div class="line">// 结果是 A A 2 3</div></pre></td></tr></table></figure>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><blockquote>
+<p>Go中的运算符均是从左至右结合。其优先级如下：</p>
+</blockquote>
+<ol>
+<li>^ !</li>
+<li><ul>
+<li>/ % &lt;&lt; &gt;&gt; &amp; &amp;^</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li>| ^</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>== != &lt; &lt;= &gt;= &gt;</li>
+<li>&lt;-</li>
+<li>&amp;&amp;</li>
+<li>||</li>
+</ol>
+<blockquote>
+<p>其中有四个符号位运算要注意</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>数据/符号</th>
+<th>二进制/结果</th>
+<th>原理说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>0110</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1011</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>0010</td>
+<td>两位同时为1结果就为1</td>
+</tr>
+<tr>
+<td>\</td>
+<td></td>
+<td>1111</td>
+<td>其中一位为1结果就为1</td>
+</tr>
+<tr>
+<td>^</td>
+<td>1101</td>
+<td>两位其中一个为1结果就为1</td>
+</tr>
+<tr>
+<td>&amp;^</td>
+<td>0100</td>
+<td>如果第二个数为1就要把第一个数的同位数改成0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="判断语句-if"><a href="#判断语句-if" class="headerlink" title="判断语句 if"></a>判断语句 if</h2><ul>
+<li>条件表达式没有括号</li>
+<li>支持一个初始化表达式(可以是并行方式)</li>
+<li>左大括号必须和条件语句或else在同一行</li>
+<li>支持单行模式</li>
+<li>初始化语句中的变量为block级别，同时隐藏外部同名变量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">func main() &#123;</div><div class="line">	a := true</div><div class="line">	if a, b, c := 1, 2, 3; a+b+c &gt; 6 &#123;</div><div class="line">		fmt.Println(&quot;大于6&quot;)</div><div class="line">	&#125; else &#123;</div><div class="line">		fmt.Println(&quot;小于等于6&quot;)</div><div class="line">		fmt.Println(a)</div><div class="line">	&#125;</div><div class="line">	fmt.Println(a)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="循环语句-for"><a href="#循环语句-for" class="headerlink" title="循环语句 for"></a>循环语句 for</h2><ul>
+<li>Go只有for一个循环语句关键字。支持3种形式</li>
+<li>初始化和进步表达式可以是多个值</li>
+<li>条件语句每次循环都会被重新检查，因此不建议在条件语句中使用函数，尽量提前计算好条件并以变量或常量代替</li>
+<li>左大括号必须和条件语句在同一行</li>
+</ul>
+<p><img src="http://note.youdao.com/yws/api/personal/file/FE8CCA1B54AF456FB47C04610C18C78D?method=download&amp;shareKey=55eb141e3e1be970cf85e7a2e3855f7f" alt="image"></p>
+<h2 id="选择语句-switch"><a href="#选择语句-switch" class="headerlink" title="选择语句 switch"></a>选择语句 switch</h2><ul>
+<li>可以使用任何类型或表达式作为条件语句</li>
+<li>不需要写break，一旦条件符合自动终止</li>
+<li>如果希望继续执行下一个case，需要使用fallthrough语句</li>
+<li>支持一个初始化表达式，右侧需要分号隔开</li>
+<li>左大括号必须和条件语句在同一行</li>
+</ul>
+<p><img src="http://note.youdao.com/yws/api/personal/file/ED41A8007FF0445F98CBEE5B80E4C16F?method=download&amp;shareKey=91a1d737b56d4b2026368cb729f8bc51" alt="image"></p>
+<h2 id="跳转语句-goto-、break、continue"><a href="#跳转语句-goto-、break、continue" class="headerlink" title="跳转语句 goto 、break、continue"></a>跳转语句 goto 、break、continue</h2><ul>
+<li>三个语法都可以配合标签使用</li>
+<li>标签区分大小写，若不使用会造成编译出错</li>
+<li>break与continue配合标签可用于多层循环的跳出</li>
+<li>goto是调整试行位置，与其他两个语句标签的结果不相同</li>
+</ul>
+<p><img src="http://note.youdao.com/yws/api/personal/file/0FC3893FA77D4361ADA0703A54216091?method=download&amp;shareKey=9a281be9e9ae63027c03d76c09dc11c3" alt="image"></p>
+<blockquote>
+<p>需要注意的是：goto的标签一般放在循环后面，而continue需要是在有限循环中</p>
+</blockquote>
+<h2 id="数组-Array"><a href="#数组-Array" class="headerlink" title="数组 Array"></a>数组 Array</h2><ul>
+<li>定义数组的格式：var 变量名 [长度]类型 =&gt; var array []int | array :=[10]int{}</li>
+<li>数组长度也是类型的一部分，因此具有不同长度的数组为不同类型</li>
+<li>注意区分指向数组的指针和指针数组</li>
+<li>数组在Go中为值类型，比较用==或者!=。而且比较严格，长度要一致，数据类型要一直才能比较</li>
+<li>可以使用new来创建数组，次方法返回一个指向数组的指针</li>
+<li>Go支持多维数组</li>
+</ul>
+<h2 id="切片Slice"><a href="#切片Slice" class="headerlink" title="切片Slice"></a>切片Slice</h2><ul>
+<li>其自身不是数组，它指向底层的数组</li>
+<li>作为变长数组的替代方案，可以关联底层数组的局部或全部</li>
+<li>Slice为引用类型，可以直接创建或从底层数组获取生成</li>
+<li>使用len()获取元素个数，cap()获取容量大小</li>
+<li>一般使用make()创建。make([]T,len,cap)，len表示元素个数，cap表示容量，如果cap省略，则和len的值相同。cap是翻倍增加</li>
+<li><p>如果多个slice指向相同底层数组，其中一个的值改变会影响全部</p>
+</li>
+<li><p>append函数会改变slice所引用的数组的内容，从而影响到引用同一数组的其它slice。 但当slice中没有剩<br>余空间（即(cap-len) == 0）时，此时将动态分配新的数组空间。返回的slice数组指针将指向这个空间，而原<br>数组的内容将保持不变；其它引用此数组的slice则不受影响。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var array = [10]byte&#123;&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;, &apos;g&apos;, &apos;h&apos;, &apos;i&apos;, &apos;j&apos;&#125;</div><div class="line">aSlice := array[:3]</div><div class="line">fmt.Println(len(aSlice),cap(aSlice),cap(array))</div><div class="line">aSlice = array[3:7]</div><div class="line">fmt.Println(len(aSlice),cap(aSlice),cap(array))</div><div class="line"></div><div class="line">//结果可以看出如果是从array中获取得到的Slice，Slice的cap将是array的cap减去Slice的起始下标</div></pre></td></tr></table></figure>
+<h2 id="集合-Map"><a href="#集合-Map" class="headerlink" title="集合 Map"></a>集合 Map</h2><ul>
+<li>类似其他语言中的哈希表或者字典，以key-value形式存储数据</li>
+<li>Key必须是支持==或者!=比较运算的类型，不可以是函数、map或者slice</li>
+<li>Map查找比线性搜索快很多，但比使用索引访问数据的类型慢100倍</li>
+<li>Map使用make()创建，支持:=这种简写方式。make([keyType]valueType,cap),cap表示容量，可省略，超出容量会自动扩容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//Map集合的遍历</div><div class="line"></div><div class="line">for index, value := range m &#123;</div><div class="line">	fmt.Println(index, value)</div><div class="line">&#125;</div><div class="line"></div><div class="line">for index :=range m&#123;</div><div class="line">	fmt.Println(index)</div><div class="line">&#125;</div><div class="line"></div><div class="line">for _,value :=range m&#123;</div><div class="line">	fmt.Println(value)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="函数function"><a href="#函数function" class="headerlink" title="函数function"></a>函数function</h2><blockquote>
+<p>Go的函数<strong>不支持嵌套、重装、默认参数</strong> ,但Go的函数有无需声明原形、不定长度变参、多返回值、命名返回值参数匿名函数、闭包的特点，而且函数也可以作为一种类型使用。基本类型在函数中修改值不影响函数调用处的值，</p>
+</blockquote>
+<h2 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h2><ul>
+<li>defer的执行方式类似其他语言中的析构函数，在函数体执行结束后按照调用顺序的相反顺序逐个执行</li>
+<li>即时函数发生严重错误也会执行</li>
+<li>支持匿名函数的调用</li>
+<li>常用于资源管理、文件关闭、解锁以及记录时间等操作</li>
+<li>通过与匿名函数可在return之后修改函数计算结果</li>
+<li>如果函数体内某个变量作为defer时，匿名函数的参数，则在定义defer时已经获得了拷贝，否则则是引用某个变量的地址</li>
+<li>Go没有异常机制，但有panic/recover模式来处理错误</li>
+<li>Panic可以再任何地方发，但recover只有在defer调用的函数中有效</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//panic捕获，一般是defer来捕获，而且一般是放在发生错误的前面</div><div class="line">func pb() &#123;</div><div class="line">	defer func() &#123;</div><div class="line">		if error := recover(); error != nil &#123;</div><div class="line">			fmt.Println(&quot;recover in B&quot;)</div><div class="line">		&#125;</div><div class="line">	&#125;()</div><div class="line">	panic(&quot;panic in b&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="结构struct"><a href="#结构struct" class="headerlink" title="结构struct"></a>结构struct</h2><ul>
+<li>Go中的struct与C中的struct非常相似，并且Go没有class</li>
+<li>使用 type 名称 struct{}定义结构，名称遵循可见性规则</li>
+<li>支持指向自身的指针类型成员</li>
+<li>支持匿名结构，可用作成员或定义成员变量</li>
+<li>匿名结构也可以用于map的值</li>
+<li>可以使用字面值对结构体进行初始化</li>
+<li>允许直接通过指针来读写结构成员</li>
+<li>相同类型的成员可进行直接拷贝赋值</li>
+<li>支持==与!= 比较运算，但不支持&gt;或&lt;</li>
+<li>支持匿名字段，本质上是定义了以某个类型为名称的字段</li>
+<li>嵌入结构作为匿名字段看起来像继承，但Go中没有继承的概念</li>
+<li>可以使用匿名字段指针</li>
+</ul>
+<h2 id="方法method"><a href="#方法method" class="headerlink" title="方法method"></a>方法method</h2><ul>
+<li>Go中虽然没有class，但依旧有method</li>
+<li>通过显示说明receiver来实现与某个类型的组合</li>
+<li>只能为同一个包中的类型定义方法</li>
+<li>receiver可以是类型的值或者指针</li>
+<li>不存在方法重载</li>
+<li>可以使用值或者指针来调用方法，编译器会自动完成转换</li>
+<li>从某种意义上来说，方法时函数的语法糖，因为receiver其实就是方法所接收的第一个参数</li>
+<li>如果外部结构和嵌入结构存在同名方法，则优先调用外部结构的方法</li>
+<li>类型别名不会拥有底层类型所附带的方法</li>
+<li>方法可以调用结构中的非公开字段</li>
+<li>在方法中修改结构的属性，如果不是使用的*方式的话，调用处的结构不会发生变化</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//创建结构</div><div class="line">type ma struct &#123;</div><div class="line">	name string</div><div class="line">&#125;</div><div class="line"></div><div class="line">//为某个结构添加方法</div><div class="line">func (ma ma) print() &#123;</div><div class="line">	fmt.Println(&quot;this is my first method&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="接口interface"><a href="#接口interface" class="headerlink" title="接口interface"></a>接口interface</h2><ul>
+<li>接口是一个或多个方法签名的集合</li>
+<li>只要某个类型拥有该接口的所有方法签名，即算实现该接口，无需显示声明实现了那个接口，这成为Structural Typing</li>
+<li>接口只有方法的生命，没有实现，也没有数据字段</li>
+<li>接口可以匿名嵌入其他接口，或嵌入到结构中</li>
+<li>将对象赋值给接口时，会发生拷贝，而接口内部存储的是指向这个复制品的指针，既无法修改复制的状态，也无法获取指针</li>
+<li>只有当接口存储的类型和对象都为nil时，接口才等于nil</li>
+<li>接口同样支持匿名字段方法</li>
+<li>接口可以实现类似OOP中的多态</li>
+<li>空接口可以作为任何类型数据的容器</li>
+</ul>
+<h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h3><ol>
+<li>通过类型断言的ok pattern可以判断接口中的数据类型</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func disConnect(usb Usb) &#123;</div><div class="line">	//利用ok pattern进行类型检查</div><div class="line">	if pc, ok := usb.(PhoneConnecter); ok &#123;</div><div class="line">		fmt.Println(&quot;disConnect&quot;, pc.name)</div><div class="line">		return</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	fmt.Println(&quot;UnKnown decive&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>使用type switch则可针对空接口进行比较全面的类型判断</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//利用空接口来进行类型检查</div><div class="line">func disConnect(usb interface&#123;&#125;) &#123;</div><div class="line">	//利用type switch 类型检查</div><div class="line">	switch target := usb.(type) &#123;</div><div class="line">	case PhoneConnecter:</div><div class="line">		fmt.Println(&quot;disConnect&quot;, target.name)</div><div class="line">	case TvConnecter:</div><div class="line">		fmt.Println(&quot;disConnect&quot;, target.name)</div><div class="line">	default:</div><div class="line">		fmt.Println(&quot;UnKnown decive&quot;)</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h2 id="并发concurrency"><a href="#并发concurrency" class="headerlink" title="并发concurrency"></a>并发concurrency</h2><blockquote>
+<p>很多人都是冲着Go大肆宣扬的高并发而忍不住跃跃欲试，但其实从源码的解析来看，goroutine只是由官方实现的超级线程池而已。不过话说回来，每个实例4-5kb的栈内存占用和由于实现机制而大幅减少的创建和销毁开销，是制造G号称的高并发的根本原因。另外goroutine的简单医用，也在语言层面给予了开发者巨大的便利。goroutine奉行通过通信来共享内存，而不是共享内存来通信。</p>
+</blockquote>
+<h2 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h2><ul>
+<li>Channel是goroutine沟通的桥梁，大都是阻塞同步的</li>
+<li>通过make创建，close关闭</li>
+<li>Channel是引用类型</li>
+<li>可以使用 for range来迭代不断操作Channel</li>
+<li>可以设置单向和双向通信</li>
+<li>可以设置缓存大小，在未被填满前不会发生线程阻塞（即异步）</li>
+</ul>
+<h2 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h2><ul>
+<li>可以处理一个或者多个channel的发送与接收</li>
+<li>同时有多个可用的channel时按随机顺序处理</li>
+<li>可用空的select来阻塞main函数</li>
+<li>可设置超时</li>
+</ul>
+<h2 id="make、、new操作"><a href="#make、、new操作" class="headerlink" title="make、、new操作"></a>make、、new操作</h2><blockquote>
+<p>make用于内建类型（map、slice 和channel）的内存分配。new用于各种类型的内存分配。<br>内建函数new本质上说跟其它语言中的同名函数功能一样：new(T)分配了零值填充的T类型的内存空间，并且返回其<br>地址，即一个<em>T类型的值。用Go的术语说，它返回了一个指针，指向新分配的类型T的零值。有一点非常重要：<br>new返回指针。<br>内建函数make(T, args)与new(T)有着不同的功能，make只能创建slice、map和channel，并且返回一个有初<br>始值(非零)的T类型，而不是</em>T。本质来讲，导致这三个类型有所不同的原因是指向数据结构的引用在使用前必须被<br>初始化。例如，一个slice，是一个包含指向数据（内部array）的指针、长度和容量的三项描述符；在这些项目被<br>初始化之前，slice为nil。对于slice、map和channel来说，make初始化了内部的数据结构，填充适当的值。<br>make返回初始化后的（非零）值。</p>
+</blockquote>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><blockquote>
+<p><strong>main package 中有多个go文件的时候，请用go run xx.go xx.go</strong></p>
+</blockquote>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/09/29/Golang-基础/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/09/29/Golang-基础/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//lvtanxi.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/10/12/Golang-RPC/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/05/17/Java-Thread/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="吕檀溪's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        lvtanxi@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:lvtanxi@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android笔记/">Android笔记<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Git笔记/">Git笔记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/NodeJs/">NodeJs<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Redis/">Redis<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Spring-boot/">Spring-boot<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据库/">数据库<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">22</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo">
+        </a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/5121900660/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.svg);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/lvtanxi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;檀溪博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//lvtanxi.disqus.com/count.js" async></script>
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

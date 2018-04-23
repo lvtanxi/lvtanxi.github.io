@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java-数据结构与算法基础 | 
+        
+        檀溪博客
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="吕檀溪">
+    <meta name="description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    <meta name="keywords" content="吕檀溪 檀溪 檀溪博客">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="檀溪博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java-数据结构与算法基础 | 檀溪博客">
+    <meta property="og:description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用方面"><span class="post-toc-number">1.</span> <span class="post-toc-text">应用方面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法概述"><span class="post-toc-number">3.</span> <span class="post-toc-text">算法概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有序数组的二分查找"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">有序数组的二分查找</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单排序-冒泡排序BubbleSort"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">简单排序_冒泡排序BubbleSort</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单排序-选择排序SelectionSort"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">简单排序_选择排序SelectionSort</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单排序-插入排序InsertSort"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">简单排序_插入排序InsertSort</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#栈和队列-栈"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">栈和队列_栈</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#栈和队列-队列"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">栈和队列_队列</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#栈和队列-优先级队列PriorityQueue"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">栈和队列_优先级队列PriorityQueue</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#栈和队列-算数表达式ArithmeticExpressions"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">栈和队列_算数表达式ArithmeticExpressions</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链表-单链表SingLink"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">链表_单链表SingLink</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链表-双端链表DoubleLink"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">链表_双端链表DoubleLink</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链表-有序链表OrderLink"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">链表_有序链表OrderLink</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链表-双向链表TwoWayLink"><span class="post-toc-number">3.12.</span> <span class="post-toc-text">链表_双向链表TwoWayLink</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链表-迭代器iterator"><span class="post-toc-number">3.13.</span> <span class="post-toc-text">链表_迭代器iterator</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#递归recursion"><span class="post-toc-number">3.14.</span> <span class="post-toc-text">递归recursion</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#递归-归并排序RecursionSort"><span class="post-toc-number">3.15.</span> <span class="post-toc-text">递归_归并排序RecursionSort</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#大O表示法"><span class="post-toc-number">4.</span> <span class="post-toc-text">大O表示法</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java-数据结构与算法基础
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>吕檀溪</strong>
+        <span>5月 03, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java-数据结构与算法基础&url=http://yoursite.com//2017/05/03/Java-数据结构与算法基础/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/05/03/Java-数据结构与算法基础/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/05/03/Java-数据结构与算法基础/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/05/03/Java-数据结构与算法基础/index.html&title=Java-数据结构与算法基础" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=檀溪博客&title=Java-数据结构与算法基础&summary=人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/05/03/Java-数据结构与算法基础/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/05/03/Java-数据结构与算法基础/index.html&text=Java-数据结构与算法基础" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>数据结构：对计算机内存中的数据的一种安排（集合、数组）<br>算法：对结构中的数据进行各种处理（排序）</p>
+</blockquote>
+<h2 id="应用方面"><a href="#应用方面" class="headerlink" title="应用方面"></a>应用方面</h2><ol>
+<li>现实世界的数据存储</li>
+<li>程序员的工具</li>
+<li>现实世界的建模</li>
+</ol>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数组</td>
+<td>插入快</td>
+<td>查找慢、删除慢、大小固定</td>
+</tr>
+<tr>
+<td>有序数组</td>
+<td>比无序数组查找快</td>
+<td>删除慢、插入慢、大小固定</td>
+</tr>
+<tr>
+<td>栈</td>
+<td>提供后进先出的存取方式</td>
+<td>存取其他项慢</td>
+</tr>
+<tr>
+<td>队列</td>
+<td>提供先进先出的存取方式</td>
+<td>存取其他项慢</td>
+</tr>
+<tr>
+<td>链表</td>
+<td>插入、删除快</td>
+<td>查找慢</td>
+</tr>
+<tr>
+<td>二叉树</td>
+<td>插入、查找、删除都快(树平衡的情况下)</td>
+<td>删除算法复杂</td>
+</tr>
+<tr>
+<td>红黑树</td>
+<td>插入、查找、删除都快</td>
+<td>算法复杂</td>
+</tr>
+<tr>
+<td>2-3-4树</td>
+<td>插入、查找、删除都快</td>
+<td>算法复杂</td>
+</tr>
+<tr>
+<td>Hash表</td>
+<td>插入快、通过关键字存取快</td>
+<td>删除慢</td>
+</tr>
+<tr>
+<td>堆</td>
+<td>插入、删除、对最大数据项存取快</td>
+<td>对其他数据项存取慢</td>
+</tr>
+<tr>
+<td>图</td>
+<td>对现实世界建模</td>
+<td>算法复杂</td>
+</tr>
+</tbody>
+</table>
+<h2 id="算法概述"><a href="#算法概述" class="headerlink" title="算法概述"></a>算法概述</h2><blockquote>
+<p>算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。</p>
+</blockquote>
+<h3 id="有序数组的二分查找"><a href="#有序数组的二分查找" class="headerlink" title="有序数组的二分查找"></a>有序数组的二分查找</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Date: 2017-04-24</div><div class="line"> * Time: 10:32</div><div class="line"> * Description: 二分查找</div><div class="line"> */</div><div class="line">object OrderArrayTest &#123;</div><div class="line">    @JvmStatic</div><div class="line">    fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">        //初始化数组</div><div class="line">        val orderArray = IntArray(20)</div><div class="line">        for (item in 0..19) &#123;</div><div class="line">            orderArray[item] = item</div><div class="line">        &#125;</div><div class="line">        val binarySearch = binarySearch(orderArray, 1)</div><div class="line">        println(binarySearch)</div><div class="line">        println(binarySearchDef(orderArray,13))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 不带递归的查找方式</div><div class="line">     */</div><div class="line">    fun binarySearch(array: IntArray, vaule: Int): Int &#123;</div><div class="line">        var low = 0</div><div class="line">        var high = array.size - 1</div><div class="line">        var middle: Int</div><div class="line">        while (low &lt;= high) &#123;</div><div class="line">            middle = (low.plus(high)).div(2)</div><div class="line">            if (vaule == array[middle])</div><div class="line">                return middle</div><div class="line">            else if (vaule &lt; array[middle])</div><div class="line">                high = middle - 1</div><div class="line">            else</div><div class="line">                low = middle + 1</div><div class="line">        &#125;</div><div class="line">        return -1</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 递归的查找方式</div><div class="line">     */</div><div class="line">    fun binarySearch(array: IntArray, vaule: Int, beginIndex: Int, endIndex: Int): Int &#123;</div><div class="line">        val midIndex = (beginIndex.plus(endIndex)).div(2)</div><div class="line">        if (vaule &lt; array[beginIndex] || vaule &gt; array[endIndex] || beginIndex &gt; endIndex)</div><div class="line">            return -1</div><div class="line">        if (vaule &lt; array[midIndex])</div><div class="line">            return binarySearch(array, vaule, beginIndex, midIndex - 1)</div><div class="line">        else if (vaule &gt; array[midIndex])</div><div class="line">            return binarySearch(array, vaule, midIndex + 1, endIndex)</div><div class="line">        else</div><div class="line">            return midIndex</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 默认递归的查找方式</div><div class="line">     */</div><div class="line">    fun binarySearchDef(array: IntArray, vaule: Int): Int &#123;</div><div class="line">        return binarySearch(array, vaule, 0, array.size-1)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="简单排序-冒泡排序BubbleSort"><a href="#简单排序-冒泡排序BubbleSort" class="headerlink" title="简单排序_冒泡排序BubbleSort"></a>简单排序_冒泡排序<a href="http://blog.csdn.net/kimylrong/article/details/17122671" target="_blank" rel="external">BubbleSort</a></h3><ol>
+<li>比较两个对象</li>
+<li>如果左边大于右边，则调换位置</li>
+<li>向右移动一个位置，比较接下来的的两个对象</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">object BubbleSortTest &#123;</div><div class="line">    @JvmStatic</div><div class="line">    fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">        val arrayOf = intArrayOf(49, 38, 65, 97, 76, 13, 27, 49, 78, 34, 12, 64, 5, 4, 62, 99, 98, 54, 56, 17, 18, 23, 34, 15, 35, 25, 53, 51)</div><div class="line">        bubbleSort(arrayOf)</div><div class="line">        arrayOf.forEach(::println)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun bubbleSort(array: IntArray) &#123;</div><div class="line">        var temp:Int</div><div class="line">        for (i in 0..array.lastIndex) &#123;</div><div class="line">            for (j in 0..array.lastIndex - i-1) &#123;</div><div class="line">                if (array[j] &gt; array[j + 1]) &#123;</div><div class="line">                    temp = array[j]</div><div class="line">                    array[j] = array[j + 1]</div><div class="line">                    array[j + 1] = temp</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="简单排序-选择排序SelectionSort"><a href="#简单排序-选择排序SelectionSort" class="headerlink" title="简单排序_选择排序SelectionSort"></a>简单排序_选择排序<a href="http://www.cnblogs.com/shen-hua/p/5424059.html" target="_blank" rel="external">SelectionSort</a></h3><blockquote>
+<p>每一趟从待排序的记录中选出最小的元素，顺序放在已排好序的序列最后，直到全部记录排序完毕。也就是：每一趟在n-i+1(i=1，2，…n-1)个记录中选取关键字最小的记录作为有序序列中第i个记录。基于此思想的算法主要有简单选择排序、树型选择排序和堆排序。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">object SelectSortTest &#123;</div><div class="line">    @JvmStatic</div><div class="line">    fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">        val arrayOf = intArrayOf(1, 3, 2, 45, 65, 33, 12)</div><div class="line">        outPut(arrayOf)</div><div class="line">        selectSort(arrayOf)</div><div class="line">        outPut(arrayOf)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun selectSort(array: IntArray) &#123;</div><div class="line">        var min: Int</div><div class="line">        var temp: Int</div><div class="line">        for (out in 0..array.lastIndex) &#123;</div><div class="line">            min = out</div><div class="line">            //找出第out+1位到最后的最小值</div><div class="line">            (min.plus(1)..array.lastIndex)</div><div class="line">                    .asSequence()</div><div class="line">                    .filter &#123; array[it] &lt; array[min] &#125;</div><div class="line">                    .forEach &#123; min = it &#125;</div><div class="line">            //看看是不是最小的，如果是最小的就交换位置</div><div class="line">            if (out != min) &#123;</div><div class="line">                temp = array[out]</div><div class="line">                array[out] = array[min]</div><div class="line">                array[min] = temp</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    fun outPut(array: IntArray)&#123;</div><div class="line">        array.forEach&#123;</div><div class="line">            print(it)</div><div class="line">            print(&quot;,&quot;)</div><div class="line">        &#125;</div><div class="line">        println()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="简单排序-插入排序InsertSort"><a href="#简单排序-插入排序InsertSort" class="headerlink" title="简单排序_插入排序InsertSort"></a>简单排序_插入排序<a href="http://blog.csdn.net/lg1259156776/article/details/48689323" target="_blank" rel="external">InsertSort</a></h3><blockquote>
+<p>每步将一个待排序的对象,按其排序码大小,插入到前面已经排好序的一组对象的适当位置上,直到对象全部插入为止。不过逆序的时候没有选择或者冒泡排序快</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">object InsertSort &#123;</div><div class="line">    @JvmStatic</div><div class="line">    fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">        val arrayOf = intArrayOf(1, 3, 2, 45, 65, 33, 12)</div><div class="line">        arrayOf.outPut()</div><div class="line">        insertSort(arrayOf)</div><div class="line">        arrayOf.outPut()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun insertSort(array: IntArray) &#123;</div><div class="line">        var temp: Int</div><div class="line">        var tagIndex: Int</div><div class="line">        //这里的下标从1开始，因为默认取出一个</div><div class="line">        for (i in 1..array.lastIndex) &#123;</div><div class="line">            temp = array[i]</div><div class="line">            tagIndex = i</div><div class="line">            //这里是从向前取数，有点倒叙的意思</div><div class="line">            while (tagIndex &gt; 0 &amp;&amp; array[tagIndex - 1] &gt;= temp) &#123;</div><div class="line">                array[tagIndex] = array[tagIndex - 1]</div><div class="line">                tagIndex--</div><div class="line">            &#125;</div><div class="line">            array[tagIndex] = temp</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="栈和队列-栈"><a href="#栈和队列-栈" class="headerlink" title="栈和队列_栈"></a>栈和队列_栈</h3><blockquote>
+<p>栈是一种特殊的线性表。其特殊性在于限定插入和删除数据元素的操作只能在线性表的一端进行，其表现形式是后进先出(像木桶装东西)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">class StackX &#123;</div><div class="line">    //模拟木桶</div><div class="line">    private val stackArray: ArrayList&lt;Int&gt; = ArrayList()</div><div class="line">    //添加元素</div><div class="line">    fun push(value: Int) &#123;</div><div class="line">        if (!isFull())//如果满了就不添加了</div><div class="line">            stackArray.add(value)</div><div class="line">    &#125;</div><div class="line">    //弹出最后一个</div><div class="line">    fun pop(): Int &#123;</div><div class="line">        return stackArray.removeAt(stackArray.lastIndex)</div><div class="line">    &#125;</div><div class="line">    //查看最后一个</div><div class="line">    fun peek(): Int &#123;</div><div class="line">        return stackArray[stackArray.lastIndex]</div><div class="line">    &#125;</div><div class="line">    //是否为空</div><div class="line">    fun isEmpty(): Boolean &#123;</div><div class="line">        return stackArray.isEmpty()</div><div class="line">    &#125;</div><div class="line">    //是否满了</div><div class="line">    fun isFull(): Boolean &#123;</div><div class="line">        return stackArray.size &gt; 30</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    companion object &#123;</div><div class="line">        @JvmStatic</div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">            val stackX = StackX()</div><div class="line">            stackX.push(20)</div><div class="line">            stackX.push(40)</div><div class="line">            stackX.push(60)</div><div class="line">            stackX.push(80)</div><div class="line">            while (!stackX.isEmpty()) &#123;</div><div class="line">                val pop = stackX.pop()</div><div class="line">                println(pop)</div><div class="line">            &#125;</div><div class="line">            println(&quot;是否空了$&#123;stackX.isEmpty()&#125;&quot;)</div><div class="line">            println(&quot;是否满了$&#123;stackX.isFull()&#125;&quot;)</div><div class="line">            stackX.push(10)</div><div class="line">            stackX.push(30)</div><div class="line">            println(&quot;查看$&#123;stackX.peek()&#125;&quot;)</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="栈和队列-队列"><a href="#栈和队列-队列" class="headerlink" title="栈和队列_队列"></a>栈和队列_队列</h3><blockquote>
+<p>队列是一种特殊的线性表，它只允许在表的前端进行删除操作，而在表的后端进行插入操作。变现为先进先出（像排队打饭）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Queue &#123;</div><div class="line">    //队列缓存区</div><div class="line">    private val queArray: ArrayList&lt;Int&gt; = ArrayList()</div><div class="line">    //添加</div><div class="line">    fun push(value: Int) = queArray.add(value)</div><div class="line">    //删除</div><div class="line">    fun pop() = queArray.removeAt(0)</div><div class="line">    //查看</div><div class="line">    fun outPut()=queArray.outPut()</div><div class="line"></div><div class="line">    companion object&#123;</div><div class="line">        @JvmStatic</div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">            val queue = Queue()</div><div class="line">            queue.push(10)</div><div class="line">            queue.push(20)</div><div class="line">            queue.push(30)</div><div class="line">            queue.push(40)</div><div class="line">            println(&quot;删除了$&#123;queue.pop()&#125;&quot;)</div><div class="line">            println(&quot;删除了$&#123;queue.pop()&#125;&quot;)</div><div class="line">            println(&quot;删除了$&#123;queue.pop()&#125;&quot;)</div><div class="line">            queue.push(50)</div><div class="line">            queue.push(60)</div><div class="line">            queue.push(70)</div><div class="line">            queue.push(80)</div><div class="line">            queue.push(90)</div><div class="line">           queue.outPut()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="栈和队列-优先级队列PriorityQueue"><a href="#栈和队列-优先级队列PriorityQueue" class="headerlink" title="栈和队列_优先级队列PriorityQueue"></a>栈和队列_优先级队列<a href="http://blog.csdn.net/hiphopmattshi/article/details/7334487" target="_blank" rel="external">PriorityQueue</a></h3><blockquote>
+<p>优先级队列是不同于先进先出队列的另一种队列。每次从队列中取出的是具有最高优先权的元素。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">class PriorityQueue &#123;</div><div class="line">    private val queArray: ArrayList&lt;Int&gt; = ArrayList()</div><div class="line"></div><div class="line">    fun insert(item: Int) &#123;</div><div class="line">        val index = findIndex(item)</div><div class="line">        queArray.add(index, item)</div><div class="line">        queArray.outPut()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun pop() = queArray.removeAt(queArray.lastIndex)</div><div class="line"></div><div class="line">    fun outPut()=queArray.outPut()</div><div class="line"></div><div class="line">    //需找插入的位置</div><div class="line">    private fun findIndex(item: Int): Int &#123;</div><div class="line">        queArray.withIndex().forEach &#123;</div><div class="line">            if (it.value &lt; item)</div><div class="line">                return it.index</div><div class="line">        &#125;</div><div class="line">        return queArray.lastIndex + 1</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    companion object &#123;</div><div class="line">        @JvmStatic</div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">            val priorityQueue = PriorityQueue()</div><div class="line">            priorityQueue.insert(9)</div><div class="line">            priorityQueue.insert(8)</div><div class="line">            priorityQueue.insert(5)</div><div class="line">            priorityQueue.insert(6)</div><div class="line">            priorityQueue.insert(7)</div><div class="line">            priorityQueue.pop()</div><div class="line">            priorityQueue.outPut()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="栈和队列-算数表达式ArithmeticExpressions"><a href="#栈和队列-算数表达式ArithmeticExpressions" class="headerlink" title="栈和队列_算数表达式ArithmeticExpressions"></a>栈和队列_算数表达式<a href="http://blog.csdn.net/jane_no1/article/details/53504013" target="_blank" rel="external">ArithmeticExpressions</a></h3><blockquote>
+<p>在计算机中会采用的是后缀表达式(ABC<em>+)来完成我们日常生活中的中缀表达式(A+B</em>C)。本节重点是将中缀表达式转化成后缀表达式，以A+B*(C-D)为例</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>读取元素</th>
+<th>输出字符串</th>
+<th>栈</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>A</td>
+<td></td>
+</tr>
+<tr>
+<td>+</td>
+<td>A</td>
+<td>+</td>
+</tr>
+<tr>
+<td>B</td>
+<td>AB</td>
+<td>+</td>
+</tr>
+<tr>
+<td>*</td>
+<td>AB</td>
+<td>+*</td>
+</tr>
+<tr>
+<td>(</td>
+<td>AB</td>
+<td>+*(</td>
+</tr>
+<tr>
+<td>C</td>
+<td>ABC</td>
+<td>+*(</td>
+</tr>
+<tr>
+<td>-</td>
+<td>ABC</td>
+<td>+*(-</td>
+</tr>
+<tr>
+<td>D</td>
+<td>ABCD</td>
+<td>+*(-</td>
+</tr>
+<tr>
+<td>)</td>
+<td>ABCD-</td>
+<td>+*(</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>ABCD-</td>
+<td>+*</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>ABCD-*</td>
+<td>+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>ABCD-*+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">class ArithmeticStackX &#123;</div><div class="line">    //模拟木桶</div><div class="line">    private val stackArray: ArrayList&lt;Int&gt; = ArrayList()</div><div class="line"></div><div class="line">    //添加元素</div><div class="line">    fun push(value: Int) &#123;</div><div class="line">        if (!isFull())//如果满了就不添加了</div><div class="line">            stackArray.add(value)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //弹出最后一个</div><div class="line">    fun pop() = stackArray.removeAt(stackArray.lastIndex)</div><div class="line"></div><div class="line">    //查看最后一个</div><div class="line">    fun peek() = stackArray[stackArray.lastIndex]</div><div class="line"></div><div class="line">    //是否为空</div><div class="line">    fun isEmpty() = stackArray.isEmpty()</div><div class="line"></div><div class="line">    //是否满了</div><div class="line">    fun isFull() = stackArray.size &gt; 100</div><div class="line"></div><div class="line">    //计算结果</div><div class="line">    fun doPasrse(string: String): Int &#123;</div><div class="line">        //零时缓存连续弹出的两个数字以及计算结果</div><div class="line">        var num1: Int</div><div class="line">        var num2: Int</div><div class="line">        var interAns: Int</div><div class="line">        //对传进来的后缀字符串进行遍历</div><div class="line">        for (ch in string.toCharArray()) &#123;</div><div class="line">            //判断是否是数字</div><div class="line">            if (ch in &apos;0&apos;..&apos;9&apos;) &#123;</div><div class="line">                push(ch.toInt().minus(&apos;0&apos;.toInt())) //这一步很关键，默认的Char 转Int会变成hashcode对应的值，所以要减去0的hashcode值</div><div class="line">            &#125; else &#123;</div><div class="line">                num1 = pop()</div><div class="line">                num2 = pop()</div><div class="line">                //根据运算符号进行计算</div><div class="line">                when (ch) &#123;</div><div class="line">                    &apos;+&apos; -&gt; interAns = num2.plus(num1)</div><div class="line">                    &apos;-&apos; -&gt; interAns = num2.minus(num1)</div><div class="line">                    &apos;*&apos; -&gt; interAns = num2.times(num1)</div><div class="line">                    &apos;/&apos; -&gt; interAns = num2.div(num1)</div><div class="line">                    else -&gt; interAns = 0</div><div class="line">                &#125;</div><div class="line">                //每次结果要放回去，以便后面再计算</div><div class="line">                push(interAns)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //获取最后计算结果</div><div class="line">        return pop()</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    fun dispalyStatck(string: String) &#123;</div><div class="line">        print(&quot;$string：&quot;)</div><div class="line">        stackArray.outPut()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line">class ArithmeticExpressions &#123;</div><div class="line">    //模拟存放字运算符的栈</div><div class="line">    private val statckArray: ArrayList&lt;Char&gt; = ArrayList()</div><div class="line">    //最后返回的字符串</div><div class="line">    private val sb = StringBuilder()</div><div class="line">    //添加元素</div><div class="line">    fun push(char: Char) = statckArray.add(char)</div><div class="line">    //弹出最后一个元素</div><div class="line">    fun pop() = statckArray.removeAt(statckArray.lastIndex)</div><div class="line">    //是否为空</div><div class="line">    fun isEmpty() = statckArray.isEmpty()</div><div class="line">    //打印栈</div><div class="line">    fun dispalyStatck(string: String) &#123;</div><div class="line">        print(string)</div><div class="line">        statckArray.outPut()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 中缀表达式转换成后缀表达式</div><div class="line">     * @param input 中缀表达式</div><div class="line">     */</div><div class="line">    fun doTrans(input: String): String &#123;</div><div class="line">        //清空StringBuffer中的</div><div class="line">        sb.setLength(0)</div><div class="line">        //遍历字符串</div><div class="line">        for (ch in input.toCharArray()) &#123;</div><div class="line">            //判断字符的类型</div><div class="line">            when (ch) &#123;</div><div class="line">                // + - 默认为一级运算符号</div><div class="line">                &apos;+&apos;, &apos;-&apos; -&gt; gotOper(ch, 1)</div><div class="line">                // * / 默认为二级运算符号</div><div class="line">                &apos;*&apos;, &apos;/&apos; -&gt; gotOper(ch, 2)</div><div class="line">                // (的时候直接添加进去</div><div class="line">                &apos;(&apos; -&gt; push(ch)</div><div class="line">                // )的时候弹出元素</div><div class="line">                &apos;)&apos; -&gt; gotParen()</div><div class="line">                //普通元素直接拼接</div><div class="line">                else -&gt; sb.append(ch)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //把栈中的元素通过后进先出的原则进行拼接</div><div class="line">        while (!isEmpty()) &#123;</div><div class="line">            sb.append(pop())</div><div class="line">        &#125;</div><div class="line">        return sb.toString()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //把栈中的元素通过后进先出的原则进行拼接</div><div class="line">    private fun gotParen() &#123;</div><div class="line">        while (!isEmpty()) &#123;</div><div class="line">            val pop = pop()</div><div class="line">            if (pop == &apos;(&apos;)</div><div class="line">                break</div><div class="line">            sb.append(pop)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //根据字符和运算等级来拼接字符</div><div class="line">    private fun gotOper(opThis: Char, prec1: Int) &#123;</div><div class="line">        while (!isEmpty()) &#123;</div><div class="line">            // 弹出最后一个运算符</div><div class="line">            val pop = pop()</div><div class="line">            //判断是(括号,因为优先级最高,所以添加弹出的元素，然后跳出循环了</div><div class="line">            if (pop == &apos;(&apos;) &#123;</div><div class="line">                push(pop)</div><div class="line">                break</div><div class="line">            &#125;</div><div class="line">            //确定最后一个运算符的运算等级</div><div class="line">            val prec2 = if (pop == &apos;+&apos; || pop == &apos;-&apos;) 1 else 2</div><div class="line">            //获取最后一个运算符的等级小于传进来的等级，则添加运算符，跳出循环，否则就把最后一个元素的值拼接到目标字符串上</div><div class="line">            if (prec2 &lt; prec1) &#123;</div><div class="line">                push(pop)</div><div class="line">                break</div><div class="line">            &#125;</div><div class="line">            //拼接运算符号</div><div class="line">            sb.append(pop)</div><div class="line">        &#125;</div><div class="line">        //最后把传进来的字符串放进栈中</div><div class="line">        push(opThis)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    companion object &#123;</div><div class="line">        @JvmStatic</div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">            while (true) &#123;</div><div class="line">                println(&quot;亲，请输入中缀字符串：&quot;)</div><div class="line">                val bufferedReader = BufferedReader(InputStreamReader(System.`in`))</div><div class="line">                val input = bufferedReader.readLine()</div><div class="line">                if (input.isEmpty())</div><div class="line">                    return</div><div class="line">                val expressions = ArithmeticExpressions()</div><div class="line">                val doTrans = expressions.doTrans(input)</div><div class="line">                println(&quot;转化结果：$doTrans&quot;)</div><div class="line">                val arithmeticStackX = ArithmeticStackX()</div><div class="line">                val doPasrse = arithmeticStackX.doPasrse(doTrans)</div><div class="line">                println(&quot;最后结果了：$doPasrse&quot;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="链表-单链表SingLink"><a href="#链表-单链表SingLink" class="headerlink" title="链表_单链表SingLink"></a>链表_单链表<a href="http://blog.csdn.net/jane_no1/article/details/53516994" target="_blank" rel="external">SingLink</a></h3><blockquote>
+<p>链表，它也是一种数据存储结构，在大多数情况下我们可以通过链表来代替数组的操作，比如说栈和队列的实现，除非需要频繁的通过下标随机访问数据。当链表只能在链表头进行数据的插入和删除以及通过遍历来显示某个数据项的内容时，这个链表就被称为单链表。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//链表节点</div><div class="line">data class SingLink(var iData: Int, var dData: Double, var next: SingLink?=null)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">data class SingLinkList(var first: SingLink? = null) &#123;</div><div class="line">    //插入数据</div><div class="line">    fun insertFirst(id: Int, dd: Double) &#123;</div><div class="line">        first = SingLink(id, dd, first)</div><div class="line">    &#125;</div><div class="line">    //删除第一个数据</div><div class="line">    fun deteleFirst(): SingLink? &#123;</div><div class="line">        val temp = first</div><div class="line">        first = first?.next</div><div class="line">        return temp</div><div class="line">    &#125;</div><div class="line">    //根据key查找数据</div><div class="line">    fun find(key: Int): SingLink? &#123;</div><div class="line">        var current = first</div><div class="line">        if (current != null) &#123;</div><div class="line">            while (current!!.iData != key) &#123;</div><div class="line">                if (current.next != null)</div><div class="line">                    current = current.next</div><div class="line">                else</div><div class="line">                    return null</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return current</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    fun delete(key: Int): SingLink? &#123;</div><div class="line">        var current = first</div><div class="line">        var previous = first</div><div class="line">        while (current != null) &#123;</div><div class="line">            if (current.iData == key)</div><div class="line">                break</div><div class="line">            previous = current</div><div class="line">            current = current.next</div><div class="line">        &#125;</div><div class="line">        previous?.next = current?.next</div><div class="line">        return current</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    fun dispalyList() &#123;</div><div class="line">        var current = first</div><div class="line">        if (current != null) &#123;</div><div class="line">            while (current!!.next != null) &#123;</div><div class="line">                println(current.toString())</div><div class="line">                current = current.next</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    companion object &#123;</div><div class="line">        @JvmStatic</div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">            val linkList = SingLinkList()</div><div class="line">            linkList.insertFirst(1, 2.2)</div><div class="line">            linkList.insertFirst(2, 4.4)</div><div class="line">            linkList.insertFirst(3, 6.6)</div><div class="line">            linkList.insertFirst(4, 8.8)</div><div class="line">            linkList.dispalyList()</div><div class="line">            val link = linkList.delete(3)</div><div class="line">            println(link?.toString())</div><div class="line">            linkList.dispalyList()</div><div class="line">            val link2 = linkList.deteleFirst()</div><div class="line">            println(link2?.toString())</div><div class="line">            linkList.dispalyList()</div><div class="line">            val find = linkList.find(2)</div><div class="line">            println(find?.toString())</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="链表-双端链表DoubleLink"><a href="#链表-双端链表DoubleLink" class="headerlink" title="链表_双端链表DoubleLink"></a>链表_双端链表<a href="http://blog.csdn.net/jane_no1/article/details/53519348" target="_blank" rel="external">DoubleLink</a></h3><blockquote>
+<p>双端链表和传统的链表非常相似，唯一的不同点在于，双端链表的表头除了有一个指向第一个链接点的Link对象first外，还有一个指向链表最后一个链接点的Link对象last,双端链表可以很快的像普通链表一样在表头位置插入新节点，同时也可以在表尾直接插入新节点。虽然普通链表也可以做到在表尾插入新链接点，但是需要通过遍历链表直到表尾，这显然效率是很低的。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 双端链表节点</div><div class="line">data class DLink(var dData: Int, var next: DLink? = null) &#123;</div><div class="line">    fun dispalyLink()&#123;</div><div class="line">        print(&quot;$dData  &quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">//申明两个链节点来存储第一个和最后一个连接点</div><div class="line">data class FirstLastLink(var first: DLink? = null, var last: DLink? = null) &#123;</div><div class="line">    //判断链表是否为空</div><div class="line">    fun isEmpty() = first == null</div><div class="line">    //在依次插入新数据</div><div class="line">    fun insertFirst(dd: Int) &#123;</div><div class="line">        val dLink = DLink(dd)</div><div class="line">        //如果为空的话，这说明第一个链节点也是最后一个链节点</div><div class="line">        if (isEmpty())</div><div class="line">            last = dLink</div><div class="line">        //这是新的第一个节点</div><div class="line">        dLink.next = first</div><div class="line">        first = dLink</div><div class="line">    &#125;</div><div class="line">    //在末尾插入数据</div><div class="line">    fun insertLast(dd: Int) &#123;</div><div class="line">        val dLink = DLink(dd)</div><div class="line">        //如果为空的话，这说明最后一个链节点也是第一个链节点</div><div class="line">        if (isEmpty())</div><div class="line">            first = dLink</div><div class="line">        else</div><div class="line">            last?.next = dLink</div><div class="line">            //这是新的最后一个节点</div><div class="line">        last = dLink</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun deleteFirst(): Int? &#123;</div><div class="line">        val temp = first?.dData</div><div class="line">        if (first?.next == null)</div><div class="line">            last = null</div><div class="line">        first = first?.next</div><div class="line">        return temp</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun dispalyList() &#123;</div><div class="line">        var current = first</div><div class="line">        while (current != null) &#123;</div><div class="line">            current.dispalyLink()</div><div class="line">            current = current.next</div><div class="line">        &#125;</div><div class="line">        println()</div><div class="line">    &#125;</div><div class="line">    companion object&#123;</div><div class="line">        @JvmStatic</div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">            val firstLastLink = FirstLastLink()</div><div class="line">            firstLastLink.insertFirst(12)</div><div class="line">            firstLastLink.insertFirst(13)</div><div class="line">            firstLastLink.insertFirst(14)</div><div class="line">            firstLastLink.insertLast(15)</div><div class="line">            firstLastLink.last?.dispalyLink()</div><div class="line">            println()</div><div class="line">            firstLastLink.dispalyList()</div><div class="line">            val deleteFirst = firstLastLink.deleteFirst()</div><div class="line">            println(deleteFirst)</div><div class="line">            firstLastLink.dispalyList()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="链表-有序链表OrderLink"><a href="#链表-有序链表OrderLink" class="headerlink" title="链表_有序链表OrderLink"></a>链表_有序链表<a href="http://blog.csdn.net/jane_no1/article/details/53582539" target="_blank" rel="external">OrderLink</a></h3><blockquote>
+<p>在链表中，当数据是按顺序排列时，链表被称为有序链表。一般来说有序链表的删除只在表头进行删除最大或最小值，有时会在链表中删除特定的值。<br>在用到有序数组的地方都可以用有序链表代替，有序链表由于有序数组的地方是它的插入速度（不需要移动和复制）以及数组的大小是固定的，而链表的大小不受限制。不过，有序链表的实现会比有序数组的实现困难一些。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">data class OrderLink(var dData: Int, var next: OrderLink? = null) &#123;</div><div class="line">    fun display()&#123;</div><div class="line">        print(&quot;$dData &quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">data class OrderLinkList(var first: OrderLink? = null) &#123;</div><div class="line"></div><div class="line">    fun push(orderLink: OrderLink) &#123;</div><div class="line">        var previous: OrderLink? = null</div><div class="line">        var current = first</div><div class="line">        while (current != null &amp;&amp; current.dData &lt; orderLink.dData) &#123;</div><div class="line">            previous = current</div><div class="line">            current = current.next</div><div class="line">        &#125;</div><div class="line">        if (previous == null) &#123;</div><div class="line">            first = orderLink</div><div class="line">            return</div><div class="line">        &#125;</div><div class="line">        previous.next = orderLink</div><div class="line">        orderLink.next = current</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun push(key: Int) &#123;</div><div class="line">        push(OrderLink(key))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun bindData(array: ArrayList&lt;OrderLink&gt;) &#123;</div><div class="line">        first = null</div><div class="line">        for (item in array) &#123;</div><div class="line">            push(item)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    fun pop(): OrderLink? &#123;</div><div class="line">        val temp = first</div><div class="line">        first = first?.next</div><div class="line">        return temp</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun display() &#123;</div><div class="line">        var current = first</div><div class="line">        while (current != null) &#123;</div><div class="line">            current.display()</div><div class="line">            current = current.next</div><div class="line">        &#125;</div><div class="line">        println()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    companion object &#123;</div><div class="line">        @JvmStatic</div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">            val orderLinkList = OrderLinkList()</div><div class="line">         /*   orderLinkList.push(1)</div><div class="line">            orderLinkList.push(5)</div><div class="line">            orderLinkList.push(3)</div><div class="line">            orderLinkList.push(2)</div><div class="line">            orderLinkList.push(28)</div><div class="line">            orderLinkList.display()</div><div class="line">            orderLinkList.pop()</div><div class="line">            orderLinkList.display()*/</div><div class="line">            val random = Random()</div><div class="line">            val array = ArrayList&lt;OrderLink&gt;()</div><div class="line">            var link:OrderLink</div><div class="line">            (0..100).forEach&#123;</div><div class="line">                link= OrderLink(random.nextInt(100))</div><div class="line">                array.add(link)</div><div class="line">            &#125;</div><div class="line">            orderLinkList.bindData(array)</div><div class="line">            orderLinkList.display()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="链表-双向链表TwoWayLink"><a href="#链表-双向链表TwoWayLink" class="headerlink" title="链表_双向链表TwoWayLink"></a>链表_双向链表<a href="http://blog.csdn.net/jane_no1/article/details/53787873" target="_blank" rel="external">TwoWayLink</a></h3><blockquote>
+<p>对于传统链表的反向遍历问题，在双向链表中能够得到很好的解决。双向链表即允许向前遍历，也允许反向遍历。因为在双向链表中，每一个链接点都有两个指向其它链接点的引用，一个指向下一个链接点，一个指向上一个链接点。而对于表头他也有first指向第一个链接点和last指向最后一个链接点两个引用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">data class TwoWayLink(var dData: Int, var next: TwoWayLink? = null, var previous: TwoWayLink? = null) &#123;</div><div class="line">    fun display() &#123;</div><div class="line">        print(&quot;$dData  &quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div></pre></td><td class="code"><pre><div class="line">class TwoWayLinkList(var first: TwoWayLink? = null, var last: TwoWayLink? = null) &#123;</div><div class="line">    fun isEmpty() = first == null</div><div class="line">    /**</div><div class="line">     * 从头部插入</div><div class="line">     */</div><div class="line">    fun pushFirst(dd: Int) &#123;</div><div class="line">        val link = TwoWayLink(dd,next = first)</div><div class="line">        if (isEmpty())</div><div class="line">            last = link</div><div class="line">        else</div><div class="line">            first?.previous = link</div><div class="line">        first = link</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 从尾部插入</div><div class="line">     */</div><div class="line">    fun pushLast(dd: Int) &#123;</div><div class="line">        val link = TwoWayLink(dd)</div><div class="line">        if (isEmpty()) &#123;</div><div class="line">            first = link</div><div class="line">        &#125; else &#123;</div><div class="line">            last?.next = link</div><div class="line">            link.previous = last</div><div class="line">        &#125;</div><div class="line">        last = link</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 根据位置插入数据</div><div class="line">     */</div><div class="line">    fun pushAfter(key: Int, dd: Int): Boolean &#123;</div><div class="line">        var current = first</div><div class="line">        while (current?.dData != key) &#123;</div><div class="line">            current = current?.next</div><div class="line">            if (current == null)</div><div class="line">                return false</div><div class="line">        &#125;</div><div class="line">        val link = TwoWayLink(dd)</div><div class="line">        if (current == last) &#123;</div><div class="line">            link.next = null</div><div class="line">            last = link</div><div class="line">        &#125; else &#123;</div><div class="line">            link.next = current.next</div><div class="line">            current.next?.previous = link</div><div class="line">        &#125;</div><div class="line">        link.previous = current</div><div class="line">        current.next = link</div><div class="line">        return true</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 根据key删除数据</div><div class="line">     */</div><div class="line">    fun deleteByKey(key: Int): TwoWayLink? &#123;</div><div class="line">        var current = first</div><div class="line">        while (current?.dData != key) &#123;</div><div class="line">            current = current?.next</div><div class="line">            if (current == null)</div><div class="line">                return null</div><div class="line">        &#125;</div><div class="line">        if (current == first)</div><div class="line">            first = current.next</div><div class="line">        else</div><div class="line">            current.previous?.next = current.next</div><div class="line"></div><div class="line">        if (current == last)</div><div class="line">            last = current.previous</div><div class="line">        else</div><div class="line">            current.next?.previous = current.previous</div><div class="line">        return current</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 从前向后显示</div><div class="line">     */</div><div class="line">    fun displayForward() &#123;</div><div class="line">        var current = first</div><div class="line">        while (current != null) &#123;</div><div class="line">            current.display()</div><div class="line">            current = current.next</div><div class="line">        &#125;</div><div class="line">        println()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 从后向前显示</div><div class="line">     */</div><div class="line">    fun displayBackward() &#123;</div><div class="line">        var current = last</div><div class="line">        while (current != null) &#123;</div><div class="line">            current.display()</div><div class="line">            current = current.previous</div><div class="line">        &#125;</div><div class="line">        println()</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 从头部删除元素</div><div class="line">     */</div><div class="line">    fun deleteFirst(): TwoWayLink? &#123;</div><div class="line">        if (isEmpty())</div><div class="line">            return null</div><div class="line">        val temp = first</div><div class="line">        if (first?.next == null)</div><div class="line">            last = null</div><div class="line">        else</div><div class="line">            first?.next?.previous = null</div><div class="line">        first = first?.next</div><div class="line">        return temp</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 从尾部删除元素</div><div class="line">     */</div><div class="line">    fun deleteLast(): TwoWayLink? &#123;</div><div class="line">        if (isEmpty())</div><div class="line">            return null</div><div class="line">        val temp = last</div><div class="line">        if (first?.next == null)</div><div class="line">            first = null</div><div class="line">        else</div><div class="line">            last?.previous?.next = null</div><div class="line">        last = last?.previous</div><div class="line">        return temp</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    companion object&#123;</div><div class="line">        @JvmStatic</div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">            val linkList = TwoWayLinkList()</div><div class="line">            linkList.pushFirst(22)</div><div class="line">            linkList.pushFirst(44)</div><div class="line">            linkList.pushFirst(66)</div><div class="line"></div><div class="line">            linkList.pushLast(11)</div><div class="line">            linkList.pushLast(33)</div><div class="line">            linkList.pushLast(55)</div><div class="line">            linkList.displayForward()</div><div class="line">            linkList.displayBackward()</div><div class="line"></div><div class="line">            linkList.deleteFirst()</div><div class="line">            linkList.displayForward()</div><div class="line">            linkList.deleteLast()</div><div class="line">            linkList.displayForward()</div><div class="line">            linkList.deleteByKey(11)</div><div class="line">            linkList.displayForward()</div><div class="line">            linkList.pushAfter(22,88)</div><div class="line">            linkList.displayForward()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="链表-迭代器iterator"><a href="#链表-迭代器iterator" class="headerlink" title="链表_迭代器iterator"></a>链表_迭代器<a href="http://blog.csdn.net/jane_no1/article/details/53840114" target="_blank" rel="external">iterator</a></h3><blockquote>
+<p>在链表中可以通过find()方法来查找到某一个特定的值，也可以通过delete方法删除某一个特定的值。这些操作都有一个搜索的工作，以找到特定的链接点。<br>在链表中进行一次某个值的查找删除或插入是简单的。但是现实中，经常会进行的是对某些特定的链接点的操作，而这些操作也都要进行搜索的工作。例如：要查找出所有某班成绩低于平均成绩的同学，要改变公司所有拥有最低工资的员工工资。这些都要进行搜索。<br>但是链表不是数组，链表没有下标，如果是数组的话，可以通过跟踪下标来确定当前搜索到的位置，当查找到第一个符合条件的值的同时，返回当前的下标，从而使得在继续查找下一个符合条件的值时，可以从该下标开始。链表不可以，链表在返回了符合条件的值后，必须从头开始查找下一个符合条件的值。如果有一个保存当前链接点的引用，在下一次查找时，从该引用的链接点进行步进，这样效率就会提高很多。<br>可能有人在说到“保存当前链接点的引用”时，就想到了在之前链表的介绍中，在链表类中定义的current，用current来存取一个链接点，然后使current递增，来移动到下一个链接点。<br>这种方法存在的一个问题是，只能进行一种引用。但是在现实中可能不止一个，就像经常要使用多个下标。并且需要引用的数目是未知的，所以这个引用不应该定义在链表内，而应该封装在一个独立的类中，并且这个类不能和链表相同。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class ILink(var dData:Int,var next:ILink?=null) &#123;</div><div class="line">    fun display()&#123;</div><div class="line">        print(&quot;$dData  &quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line">class ILinkList(var first: ILink? = null) &#123;</div><div class="line"></div><div class="line">    fun getFisrt() = first</div><div class="line"></div><div class="line">    fun setFirstData(link: ILink?) &#123;</div><div class="line">        first = link</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun isEmpty() = first == null</div><div class="line"></div><div class="line">    fun display() &#123;</div><div class="line">        var current = first</div><div class="line">        while (current != null) &#123;</div><div class="line">            current.display()</div><div class="line">            current = current.next</div><div class="line">        &#125;</div><div class="line">        println()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun getIterator() = LinkIterator(this)</div><div class="line"></div><div class="line">    companion object &#123;</div><div class="line">        @JvmStatic</div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">            val iLinkList = ILinkList()</div><div class="line">            val iterator = iLinkList.getIterator()</div><div class="line">            iterator.insertAfter(20)</div><div class="line">            iterator.insertAfter(40)</div><div class="line">            iterator.insertAfter(80)</div><div class="line">            iterator.insertBefore(60)</div><div class="line">            var flag = true</div><div class="line">            //s:显示链表内容，r:重置.n:移动到下一个节点,g:获取当前节点,b:在当前节点前插入,a:在当前节点之后插入,d:删除当前节点</div><div class="line">            while (flag) &#123;</div><div class="line">                println(&quot;亲，请输入中缀字符串：&quot;)</div><div class="line">                val bufferedReader = BufferedReader(InputStreamReader(System.`in`))</div><div class="line">                val input = bufferedReader.readLine()</div><div class="line">                if (input.isEmpty())</div><div class="line">                    return</div><div class="line">                when (input) &#123;</div><div class="line">                    &quot;s&quot; -&gt; iLinkList.display()</div><div class="line">                    &quot;r&quot; -&gt; iterator.reset()</div><div class="line">                    &quot;n&quot; -&gt; iterator.nextLink()</div><div class="line">                    &quot;g&quot; -&gt; iterator.getCurrentLink()</div><div class="line">                    &quot;b&quot; -&gt; iterator.insertBefore(100)</div><div class="line">                    &quot;a&quot; -&gt; iterator.insertAfter(200)</div><div class="line">                    &quot;d&quot; -&gt; iterator.deleteCurrent()</div><div class="line">                    &quot;e&quot; -&gt; flag = false</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">class LinkIterator(val linkList: ILinkList, var current: ILink? = null, var previous: ILink? = null) &#123;</div><div class="line">    init &#123;</div><div class="line">        reset()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun reset() &#123;</div><div class="line">        current = linkList.getFisrt()</div><div class="line">        previous = null</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun isEnd() = current?.next == null</div><div class="line"></div><div class="line">    fun nextLink() &#123;</div><div class="line">        if(linkList.isEmpty()||isEnd())</div><div class="line">            return</div><div class="line">        previous = current</div><div class="line">        current = current?.next</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun getCurrentLink() = current</div><div class="line">    /**</div><div class="line">     * 在迭代器正在访问的节点之后插入一个新节点</div><div class="line">     */</div><div class="line">    fun insertAfter(dd: Int) &#123;</div><div class="line">        val iLink = ILink(dd)</div><div class="line">        if (linkList.isEmpty()) &#123;</div><div class="line">            linkList.setFirstData(iLink)</div><div class="line">            current = iLink</div><div class="line">        &#125; else &#123;</div><div class="line">            iLink.next = current?.next</div><div class="line">            current?.next = iLink</div><div class="line">            nextLink()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 在迭代器正在访问的节点之前插入一个新节点</div><div class="line">     */</div><div class="line">    fun insertBefore(dd: Int) &#123;</div><div class="line">        val iLink = ILink(dd)</div><div class="line">        if (previous == null) &#123;</div><div class="line">            iLink.next = linkList.getFisrt()</div><div class="line">            linkList.setFirstData(iLink)</div><div class="line">            reset()</div><div class="line">        &#125; else &#123;</div><div class="line">            iLink.next = previous?.next</div><div class="line">            previous?.next = iLink</div><div class="line">            current = iLink</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun deleteCurrent() &#123;</div><div class="line">        if (current == null)</div><div class="line">            return</div><div class="line">        if (previous == null) &#123;</div><div class="line">            linkList.setFirstData(current?.next)</div><div class="line">            reset()</div><div class="line">        &#125; else &#123;</div><div class="line">            previous?.next = current?.next</div><div class="line">            if (isEnd())</div><div class="line">                reset()</div><div class="line">            else</div><div class="line">                current = current?.next</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="递归recursion"><a href="#递归recursion" class="headerlink" title="递归recursion"></a>递归<a href="http://www.cnblogs.com/renxiaoren/archive/2015/06/11/4568745.html" target="_blank" rel="external">recursion</a></h3><blockquote>
+<p> 递归算法是一种直接或间接地调用自身的算法。在计算机编写程序中，递归算法对解决一大类问题是十分有效的，它往往使算法的描述简洁而且易于理解。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">object TriangleApp &#123;</div><div class="line">    @JvmStatic</div><div class="line">    fun main(args: Array&lt;String&gt;) &#123;</div><div class="line">        var num = getNum()</div><div class="line">        num = triangle(num)</div><div class="line">        println(num)</div><div class="line">        multiplicationTable(9)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun triangle(num: Int): Int &#123;</div><div class="line">        if (num == 1)</div><div class="line">            return 1</div><div class="line">        return num.plus(triangle(num.minus(1)))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fun multiplicationTable(num: Int) &#123;</div><div class="line">        if (num == 1) &#123;</div><div class="line">            println(&quot;1 * 1 = 1&quot;)</div><div class="line">        &#125; else &#123;</div><div class="line">            (1..num).forEach &#123;</div><div class="line">                print(&quot;$it * $num = $&#123;it * num&#125; &quot;)</div><div class="line">            &#125;</div><div class="line">            println()</div><div class="line">            multiplicationTable(num.minus(1))</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    fun getNum(): Int &#123;</div><div class="line">        println(&quot;请输入一个数字：&quot;)</div><div class="line">        val reader = BufferedReader(InputStreamReader(System.`in`))</div><div class="line">        val readLine = reader.readLine()</div><div class="line">        return readLine.toInt()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>嵌套for循环 和  用递归实现 的比较:<br>栈 主要是用来存放栈帧的，每执行一个方法就会出现压栈操作，所以采用递归的时候产生的栈帧比较多，递归就会影响到内存，非常消耗内存，而使用for循环就执行了一个方法，压入栈帧一次，只存在一个栈帧，所以比较节省内存。</p>
+</blockquote>
+<h3 id="递归-归并排序RecursionSort"><a href="#递归-归并排序RecursionSort" class="headerlink" title="递归_归并排序RecursionSort"></a>递归_归并排序<a href="http://blog.csdn.net/jane_no1/article/details/53926037" target="_blank" rel="external">RecursionSort</a></h3><blockquote>
+<p>归并排序是一种比简单排序快很多的排序算法，在之前介绍的简单排序比如冒泡排序、选择排序的时间都是O(N^2)，而归并排序只需要O(N*log(N))的时间。归并排序的实现相当容易。它的唯一的缺点就是需要在存储器中有一个与原数组相同大小的数组，如果初始的数组已经几乎占满了整个存储器，那么归并排序将是不可行的，不过如果存储器有足够的空间，那么这将是一个不错的选择。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">public class MergeSort &#123;</div><div class="line">    private int[] theArray;</div><div class="line">    private int nItem;</div><div class="line"></div><div class="line">    private MergeSort(int max) &#123;</div><div class="line">        theArray = new int[max];</div><div class="line">        nItem = 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void insert(int value) &#123;</div><div class="line">        theArray[nItem++] = value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void displayList() &#123;</div><div class="line">        for (int i = 0; i &lt; nItem; i++) &#123;</div><div class="line">            System.out.print(theArray[i] + &quot; &quot;);</div><div class="line">        &#125;</div><div class="line">        System.out.println(&quot;&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void mergeSort() &#123;</div><div class="line">        int[] workspace = new int[nItem];</div><div class="line">        recMergeSort(workspace, 0, nItem - 1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 对半拆分数组</div><div class="line">     *</div><div class="line">     * @param workspace 零时数组</div><div class="line">     * @param lower     起始位置</div><div class="line">     * @param upper     结束位置</div><div class="line">     */</div><div class="line">    private void recMergeSort(int[] workspace, int lower, int upper) &#123;</div><div class="line">        if (lower == upper)</div><div class="line">            return;</div><div class="line">        int mid = (lower + upper) / 2; // 获取中间位置</div><div class="line">        recMergeSort(workspace, lower, mid);//拆分0到中间的(递归前半部分排序处理)</div><div class="line">        recMergeSort(workspace, mid + 1, upper);//拆分中间到末尾(递归后半部分排序处理)</div><div class="line">        merge(workspace, lower, mid + 1, upper); //合并数据</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 合并数据</div><div class="line">     *</div><div class="line">     * @param workspace 零时数组</div><div class="line">     * @param lowPtr    起始位置</div><div class="line">     * @param midPtr    中间位置</div><div class="line">     * @param upper     结束位置</div><div class="line">     */</div><div class="line">    private void merge(int[] workspace, int lowPtr, int midPtr, int upper) &#123;</div><div class="line">        int lower = lowPtr; //开始位置</div><div class="line">        int mid = midPtr - 1;//前半部分的中间位置</div><div class="line">        int n = upper - lowPtr + 1; //进行排序的数据项个数</div><div class="line">        int j = 0;</div><div class="line">        while (lowPtr &lt;= mid &amp;&amp; midPtr &lt;= upper)</div><div class="line">            // 左半部分的数据小于右半部分的数据，就放左边的数据，否则则相反</div><div class="line">            if (theArray[lowPtr] &lt; theArray[midPtr])</div><div class="line">                workspace[j++] = theArray[lowPtr++];//++表示移动数据下标</div><div class="line">            else</div><div class="line">                workspace[j++] = theArray[midPtr++];</div><div class="line">        //如果左边的数组还有数据没有排完(大数据)</div><div class="line">        while (lowPtr &lt;= mid)</div><div class="line">            workspace[j++] = theArray[lowPtr++];</div><div class="line">        //如果右边的数组还有数据没有排完(大数据)</div><div class="line">        while (midPtr &lt;= upper)</div><div class="line">            workspace[j++] = theArray[midPtr++];</div><div class="line">        //结果还原</div><div class="line">        for (j = 0; j &lt; n; j++)</div><div class="line">            theArray[lower + j] = workspace[j];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        MergeSort myArray = new MergeSort(10);</div><div class="line"></div><div class="line">        myArray.insert(80);</div><div class="line">        myArray.insert(38);</div><div class="line">        myArray.insert(49);</div><div class="line">        myArray.insert(25);</div><div class="line">        myArray.insert(3);</div><div class="line">        myArray.insert(75);</div><div class="line"></div><div class="line">        myArray.displayList();</div><div class="line">        myArray.mergeSort();</div><div class="line">        myArray.displayList();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="大O表示法"><a href="#大O表示法" class="headerlink" title="大O表示法"></a>大O表示法</h2><blockquote>
+<p>大O表示法，称一个函数g(n)是O(f(n))，当且仅当存在常数c&gt;0和n0&gt;=0，对一切n&gt;n0均有|g(n)|&lt;=c|f(n)|成立，也称函数g(n)以f(n)为界或者称g(n)囿于f(n)。记作g(n)=O(f(n))。<a href="http://www.baike.com/wiki/%E5%A4%A7O%E8%A1%A8%E7%A4%BA%E6%B3%95" target="_blank" rel="external">具体查看</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>标识</th>
+<th>效率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性查找</td>
+<td>O（N）</td>
+<td>还可以</td>
+</tr>
+<tr>
+<td>二分查找</td>
+<td>O（log N）</td>
+<td>良好</td>
+</tr>
+<tr>
+<td>无序数组的插入</td>
+<td>O（1）</td>
+<td>优秀</td>
+</tr>
+<tr>
+<td>有序数组的插入</td>
+<td>O（N）</td>
+<td>还可以</td>
+</tr>
+<tr>
+<td>无序数组的删除</td>
+<td>O（N）</td>
+<td>还可以</td>
+</tr>
+<tr>
+<td>有序数组的删除</td>
+<td>O（N）</td>
+<td>还可以</td>
+</tr>
+<tr>
+<td>冒泡排序</td>
+<td>O（N²）</td>
+<td>差</td>
+</tr>
+<tr>
+<td>选择排序</td>
+<td>O（N²）</td>
+<td>差</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td>O（N²）</td>
+<td>差 &gt; 冒泡</td>
+</tr>
+<tr>
+<td>链表</td>
+<td>O（N）</td>
+<td>插入快，查找和删除慢</td>
+</tr>
+</tbody>
+</table>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/05/03/Java-数据结构与算法基础/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/05/03/Java-数据结构与算法基础/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//lvtanxi.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/05/08/NodeJS与Sequelize操作MySql/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/04/19/Redis基础用法/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="吕檀溪's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        lvtanxi@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:lvtanxi@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android笔记/">Android笔记<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Git笔记/">Git笔记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/NodeJs/">NodeJs<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Redis/">Redis<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Spring-boot/">Spring-boot<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据库/">数据库<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">22</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo">
+        </a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/5121900660/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.svg);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/lvtanxi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;檀溪博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//lvtanxi.disqus.com/count.js" async></script>
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

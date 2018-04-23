@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Redis基础用法 | 
+        
+        檀溪博客
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="吕檀溪">
+    <meta name="description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    <meta name="keywords" content="吕檀溪 檀溪 檀溪博客">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="檀溪博客">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Redis基础用法 | 檀溪博客">
+    <meta property="og:description" content="人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Redis"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装Redis</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis的目录结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">Redis的目录结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis的启动与停止"><span class="post-toc-number">3.</span> <span class="post-toc-text">Redis的启动与停止</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis的命令返回值"><span class="post-toc-number">4.</span> <span class="post-toc-text">Redis的命令返回值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis的配置选项"><span class="post-toc-number">5.</span> <span class="post-toc-text">Redis的配置选项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis的数据类型"><span class="post-toc-number">6.</span> <span class="post-toc-text">Redis的数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#String字符串类型-一个键最多存储512MB"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">String字符串类型(一个键最多存储512MB)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hash类型-在配置文件中通过配置hash-max-ziplist-entries-512字节-hash-max-ziplist-value-64字段数"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">Hash类型(在配置文件中通过配置hash-max-ziplist-entries 512字节 hash-max-ziplist-value 64字段数)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#List类型"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">List类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Set类型"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">Set类型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Zset类型-有序集合-当元素的分数相同时，Redis安装ASCII码来排序"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">Zset类型(有序集合,当元素的分数相同时，Redis安装ASCII码来排序)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis与key相关的命令"><span class="post-toc-number">7.</span> <span class="post-toc-text">Redis与key相关的命令</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Redis基础用法
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>吕檀溪</strong>
+        <span>4月 19, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Redis基础用法&url=http://yoursite.com//2017/04/19/Redis基础用法/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/04/19/Redis基础用法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/04/19/Redis基础用法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yoursite.com//2017/04/19/Redis基础用法/index.html&title=Redis基础用法" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=檀溪博客&title=Redis基础用法&summary=人生就像一杯茶，不会苦一辈子，但总会苦一阵子，没有开始的苦，就没有后来的甜。&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2017/04/19/Redis基础用法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com//2017/04/19/Redis基础用法/index.html&text=Redis基础用法" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助。</p>
+</blockquote>
+<h3 id="安装Redis"><a href="#安装Redis" class="headerlink" title="安装Redis"></a>安装Redis</h3><blockquote>
+<p>可以在Redis的官网去看<a href="http://www.redis.io" target="_blank" rel="external">教程</a>。Windows用户可以直接通过<a href="https://github.com/ServiceStack/redis-windows/tree/master/downloads" target="_blank" rel="external">github</a>下载,进行解压就可以直接使用（本文以Windows系统为主）。</p>
+</blockquote>
+<h3 id="Redis的目录结构"><a href="#Redis的目录结构" class="headerlink" title="Redis的目录结构"></a>Redis的目录结构</h3><ol>
+<li>redis-server：Redis服务器</li>
+<li>redis-cli：命令行客户端</li>
+<li>redis-benchmark：Redis的性能测试工具</li>
+<li>redis-check-aof：AOF文件修复工具</li>
+<li>redis.windows.conf：Redis的配置文件(可以将配置文件中的daemonize修改成yes)</li>
+</ol>
+<h3 id="Redis的启动与停止"><a href="#Redis的启动与停止" class="headerlink" title="Redis的启动与停止"></a>Redis的启动与停止</h3><blockquote>
+<p>启动：利用命令窗口进去redis所在文件执行redis-server，或者执行点击redis-server.exe。如果需要执行自定义配置文件，则需要redis-server redis.conf</p>
+<p>停止：在redis的命令窗口(redis-cli)中执行shutdwon，或者结束Reids的进程</p>
+</blockquote>
+<h3 id="Redis的命令返回值"><a href="#Redis的命令返回值" class="headerlink" title="Redis的命令返回值"></a>Redis的命令返回值</h3><ol>
+<li>状态回复：ping &gt; PONG 或者  SET key value &gt; OK</li>
+<li>错误回复(以Error开头)：testerror &gt; (error) ERR unknown command ‘testerror’</li>
+<li>整数回复(以Integer开头)：DBSIZE &gt; (integer) 3</li>
+<li>字符串回复： GET key &gt; value/nil(标识为空)</li>
+<li>多行字符串回复： KEYS * &gt; VALUES (获取数据库中存在的key)</li>
+</ol>
+<h3 id="Redis的配置选项"><a href="#Redis的配置选项" class="headerlink" title="Redis的配置选项"></a>Redis的配置选项</h3><ol>
+<li>修改端口 服务端redis-server –port 6377 客服端redis-cli -p 6377</li>
+<li>动态获取/设置配置选项的的值 CONFIG GET name：CONFIG GET loglevel; CONFIG SET name value</li>
+<li>redis.conf相关<ul>
+<li>port 6379 默认端口</li>
+<li>bind 127.0.0.1 默认绑定的主机地址</li>
+<li>time 0 当客户端闲置多久之后关闭连接，0表示没有启动这个选项</li>
+<li>loglevel 日志级别(debug,verbose,notice,warning)默认是notice</li>
+</ul>
+</li>
+<li>logfile ‘’/stdout 日志的记录方式，默认是标准输出</li>
+<li>database 16 默认数据库的数量16个，数据库是从0开始，用SELECT 0…15 来切换数据库</li>
+<li>save 900 1 save <seconds> <changes> 多少秒有多少次改变将其同步到磁盘中数据文件里</changes></seconds></li>
+<li>rdbcompression yes 存储本地数据库时是否启用压缩。默认是启用</li>
+<li>dbfilename dump.rdb 指定本地数据库的文件名。默认是dump.rdb</li>
+<li>dir ./ 指定本地数据存放目录。默认是当前目录</li>
+</ol>
+<h3 id="Redis的数据类型"><a href="#Redis的数据类型" class="headerlink" title="Redis的数据类型"></a>Redis的数据类型</h3><h4 id="String字符串类型-一个键最多存储512MB"><a href="#String字符串类型-一个键最多存储512MB" class="headerlink" title="String字符串类型(一个键最多存储512MB)"></a>String字符串类型(一个键最多存储512MB)</h4><ol>
+<li>添加语法: SET key value [EX seconds 设置过期时间秒] [PX milliseconds 设置过期时间毫秒] [NX只有键不存在的时候才设置功|XX只有键存在的时候才能设置],若果key存在同名会产生覆盖</li>
+<li>获取语法: GET key ，键不存在返回nil，如果key不是字符串会报错</li>
+<li>GETSET:设置指定key的值，并返回旧的值：GETSET key value 。键不存在返回nil，如果key不是字符串会报错</li>
+<li>MSET: 一次设置多个键值对 MSET key vaule[key value ….];MSET test1 ‘test1’ test2 ‘test2’ test3 ‘test3’</li>
+<li>MGET: 一个获取多个键值对 MGET key [key…];  MGET test1 test2 test3</li>
+<li>STRLEN: 获取key字符串长度,STRLEN test1 如果key不存在返回的是0</li>
+<li>SETRANGE:相当于字符串替换 SETRANGE key offset value value,如果设置的key原来的字符串长度要小于偏移量或者key不存在，就会以零字节(\x00)来填充 </li>
+<li>GETRANGE: 返回字符串中的一部分 GETRANGE key start end（雷同java截取字符串）: GETRANGE test 0 -3;GETRANGE tes 1 2; GETRANGE test 0 1000</li>
+<li>SETNX: 只有key不存在才能设置成功，SETNX key value,可以提前检查一下是否存在key(EXISTS key)</li>
+<li>SETEX: 设置key的过期时间，属于原子性操作相当于执行了SET key value,又对这个key设置了过期时间EXPIRE key seconds, SETEX key second value.(可以利用TTL key查看过期时间)</li>
+<li>MSETNX: 只有键名不存在才能设置成功， 一次设置多个键值对 MSETNX key vaule[key value ….];MSETNX test1 ‘test1’ test2 ‘test2’ test3</li>
+<li>PSETEX: 以毫秒为单位设置key的生命周期，PSETEX key milliseconds value(利用PTTL查看剩余毫秒数)</li>
+<li>INCR: 对key对应的数字+1 ,INCR key ,如果key不存在则默认为0后+1，如果vaule不是数字就会报错，</li>
+<li>INCRBY: 将key对应的数字加上指定增量，INCRBY key num</li>
+<li>INCRBYFLOAT: 将key对应的数字加上指定浮点数INCRBYFLOAT key 3.2(加减不是很精确)</li>
+<li>DECR: 对key对应的数字-1 ,DECR key ,如果key不存在则默认为0后-1，如果vaule不是数字就会报错</li>
+<li>DECRBY: 将key对应的数字减去指定增量，DECRBY key num</li>
+<li>APPEND: 把值追加到字符串的末尾，APPEND key value,如果key不存在则执行SET操作</li>
+</ol>
+<h4 id="Hash类型-在配置文件中通过配置hash-max-ziplist-entries-512字节-hash-max-ziplist-value-64字段数"><a href="#Hash类型-在配置文件中通过配置hash-max-ziplist-entries-512字节-hash-max-ziplist-value-64字段数" class="headerlink" title="Hash类型(在配置文件中通过配置hash-max-ziplist-entries 512字节 hash-max-ziplist-value 64字段数)"></a>Hash类型(在配置文件中通过配置hash-max-ziplist-entries 512字节 hash-max-ziplist-value 64字段数)</h4><ol>
+<li>HSET: 将哈希表key中域field设置成指定的value,HSET key fieldName value:HSET userInfo userName ‘lvtanxi’。如果哈希表中filed不存在，相当于新建filed，设置返回成功1，如果存在覆盖原值，成功返回0</li>
+<li>HGET: 返回哈希表key中给定field的值,HGET key fieldName:HGET userInfo userName。如果key或者field不存在返回nil</li>
+<li>HSETNX: 将哈希表中的域filed设置成指定的值，只有在filed不存在的时候才可以成功，如果存在则失败。HSETNX key fieldName value</li>
+<li>HMSET: 将多个field-vaule设置到hash表key中，HMSET key fieldName vaule fieldName value</li>
+<li>HMGET: 获取hash表key中field的value,HMGET key field filed ….</li>
+<li>HGETall: 返回hash表key中的所有field-value, HGETALL key</li>
+<li>HKEYS: 返回hash表key中所有的field， HKEYS key</li>
+<li>HVALS: 返回hash表key中所有的value， HVALS key</li>
+<li>HEXISTS: 检测hash中key的field是否存在，HEXISTS key fieldName</li>
+<li>HLEN: 返回hash表key中的field的数量,HLEN key</li>
+<li>HINCRBY: 给hash中的field做增量操作(必须是数值类型),HINCRBY key fieldName increment:HINCRBY userInfo age 3</li>
+<li>HINCRBYFLOAT: 给hash中的field做增量浮点操作。HINCRBYFLOAT key fieldName increment:INCRBYFLOAT userInfo money 2.1</li>
+<li>HDEL: 删除hash中key的指定域,可以删除一个或者多个。HDEL key field field </li>
+</ol>
+<h4 id="List类型"><a href="#List类型" class="headerlink" title="List类型"></a>List类型</h4><ol>
+<li>LPUSH: 向列表左边添加元素，LPUSH key value value …</li>
+<li>RPUSH: 向列表右边添加元素，RPUSH key value value …</li>
+<li>LPUSHX: 向列表左边添加一个元素，但是key必须存在，LPUSHX key value </li>
+<li>RPUSHX: 向列表右边添加一个元素，但是key必须存在，RPUSHX key value </li>
+<li>LPOP: 将列表的头部元素弹出,返回弹出元素的值。LPOP key</li>
+<li>RPOP: 将列表的末尾元素弹出,返回弹出元素的值。RPOP key</li>
+<li>LLEN: 获取列表长度,LLEN key</li>
+<li>LRANGE: 获取列表片段, LRANGE key startIndex endIndex,如果startIndex大于列表长度返回空列表</li>
+<li>LREM: 删除列表中指定的值,LREM key count value：LREM mylist2 2 b<ul>
+<li>count &gt; 0:从列表的头开始，向尾搜索，移除与value相等的元素，移除count个</li>
+<li>count &lt; 0:从列表的尾开始，向头搜索，移除与value相等的元素，移除count个</li>
+<li>count = 0:移除列表中所以与count相等的值</li>
+</ul>
+</li>
+<li>LINDEX: 获取指定索引元素的值，LINDEX key index</li>
+<li>LSET: 设置指定索引元素的值,给不存在的列表或者超出的index设值会报错，LSET key index value</li>
+<li>LTRIM: 只保留列表的片段,LTRIM key startIndex endIndex</li>
+<li>LRANGE: 获取列表片段，LRANGE key startIndex endIndex</li>
+<li>LINSERT: 向列表中插入元素,LINSERT key BEFORE|AFTER 列表中的值 value </li>
+<li>RPOPLPUSH: 将尾部元素从一个列表转移到另一个列表的头部，RPOPLPUSH source destination</li>
+<li>BLPOP: 是LPOP的阻塞版本,BLOP key key timeout</li>
+</ol>
+<h4 id="Set类型"><a href="#Set类型" class="headerlink" title="Set类型"></a>Set类型</h4><ol>
+<li>SADD: 向集合中添加元素,元素不能重复,SADD key number [,….]</li>
+<li>SMEMBERS: 返回指定集合中的元素,SMEMBERS key</li>
+<li>SISMEMBER: 检查value是否存在于结构,SISMEMBER key number</li>
+<li>SREM: 删除集合中的一个或者多个成员，SREM key number [….]</li>
+<li>SPOP: 删除并返回集合中的随机元素,SPOP key</li>
+<li>SRANDMEMBER: 随机返回集合中的元素，SRANDMEMBER key count<ul>
+<li>count为正数，而且小于集合中的元素的个数，返回一个随机的元素的集合数组</li>
+<li>count为正数，而且大于集合中的元素的个数，返回整个集合</li>
+<li>count为负数，数组中的成员可能出现重复，数组的长度是count的绝对值</li>
+</ul>
+</li>
+<li>SDIFF: 返回集合之间的差集。SDIFF key key(谁写在前面就显示谁的)</li>
+<li>SINTER: 返回集合之间的交集。SINTER key key ….</li>
+<li>SUNION: 返回几个中并集操作。SUNION key key ….</li>
+<li>SCARD: 得到集合的长度，SCARD key</li>
+<li>SDIFFSTORE: 将差集结果保存到指定集合中，SDIFFSTORE newKey key key …..</li>
+<li>SINTERSTORE: 将交集结果保存到指定集合中，SINTERSTORE newKey key key …..</li>
+<li>SUNIONSTORE: 将并集的结果保存到指定集合中，SUNIONSTORE newKey key key …..</li>
+<li>SMOVE: 将集合中的元素移动到另外一个集合中，SMOVE sourece des 元素： SMOVE testSet course 4</li>
+</ol>
+<h4 id="Zset类型-有序集合-当元素的分数相同时，Redis安装ASCII码来排序"><a href="#Zset类型-有序集合-当元素的分数相同时，Redis安装ASCII码来排序" class="headerlink" title="Zset类型(有序集合,当元素的分数相同时，Redis安装ASCII码来排序)"></a>Zset类型(有序集合,当元素的分数相同时，Redis安装ASCII码来排序)</h4><ol>
+<li>ZADD：将元素及其分数添加到几个中。ZADD key score number</li>
+<li>ZSCORE：获取指定元素的分数。ZSCORE key number</li>
+<li>ZRANGE：按照元素分数从小到大的顺序返回指定索引start到stop之间的元素(包含两端)，ZRANGE key start stop [WITHSCORES]</li>
+<li>ZREVRANGE：和ZRANGE相反。ZREVRANGE key start stop [WITHSCORES]</li>
+<li>ZRANGEBYSCORE：获取指定分数内的元素，从小到大。ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]。可以通过(不包含端点。</li>
+<li>ZREVRANGEBYSCORE：与ZRANGEBYSCORE相反。ZREVRANGEBYSCORE key max min [WITHSCORES] [LIMIT offset count]</li>
+<li>ZINCRBY：操作某个元素的分数，返回操作后的分数，ZINCRBY key increment member :ZINCRBY php 2 test</li>
+<li>ZCARD：获取指定key的元素个数。 ZCARD key</li>
+<li>ZCOUNT：获取指定分数内的个数。ZCOUNT key min max。可以通过(不包含端点。</li>
+<li>ZREM：删除一个或者多个元素，返回删除元素个数，ZREM key number number。。。。</li>
+<li>ZREMRANGEBYRANK：按照排名范围删除元素，按照分数从小到大的顺序删除指定的排名范围内元素,ZREMRANGEBYRANK key start stop</li>
+<li>ZREMRANGEBYSCORE：按照分数范围删除元素，ZREMRANGEBYSCORE key min max</li>
+<li>ZRANK：获取指定元素的排名，根据分数从小到大，ZRANK key number</li>
+<li>ZREVRANK：获取指定元素的排名，根据分数从大到小，ZREVRANK key number</li>
+<li>ZINTERSTORE：计算有序集合并保存起来， ZINTERSTORE destination numkeys key [key …] [WEIGHTS weight] [AGGREGATE SUM|MIN|MAX]</li>
+</ol>
+<h3 id="Redis与key相关的命令"><a href="#Redis与key相关的命令" class="headerlink" title="Redis与key相关的命令"></a>Redis与key相关的命令</h3><ol>
+<li>KEYS: 返回所有符合给定通配符的key, KEYS pattern: KEYS *(匹配任意个字符)/?(匹配一个任意字符)/<a href="匹配[]之间的一个字符"></a>/\X(特殊字符转意)</li>
+<li>EXISTS: 检测指定key是否存在,EXISTS key</li>
+<li>TYPE: 返回key所存储的类型,TYPE key</li>
+<li>EXPIRE: 设置key的过期时间，EXPIRE key seconds。如果key已经存在过期时间，再通过EXPIRE设置会覆盖</li>
+<li>EXPIREAT: 在指定时间戳过期,EXPIREAR key timestamp: EXPIREAT page 1492586655</li>
+<li>PEXPIRE: 以毫秒设置key的过期时间，PEXPIRE key milliseconds</li>
+<li>PEXPIREAT: 在指定时间戳过期,单位是毫秒，PEXPIREAT key timestamp:PEXPIREAT page 1492586990000000</li>
+<li>TTL: 以秒位单位返回key的剩余时间。TTL key ,若果key没设置过期时间返回-1，如果key不存在返回-2</li>
+<li>PTTL: 以毫秒为单位返回可以的剩余时间。PTTL key,若果key没设置过期时间返回-1，如果key不存在返回-2</li>
+<li>PERSIST: 将一个带过期时间的key转变成永久的key,PERSIST key</li>
+<li>DEL: 删除一个key,返回成功删除数量,DEL key key …</li>
+<li>RANDOMKEY: 随机的行当前数据中获取一个key, RANDOMKEY</li>
+<li>RENAME: 给一个key重命名 RENAME key newKey,如果名称没发生改变会报错</li>
+<li>RENAMENX: 如果新名称不存在，才会执行Rename,RENAMENX key newKey</li>
+<li>DUMP: 序列化给定的key,返回序列化之后的值，DUMP key</li>
+<li>RESTORE: 反序列化，RESTORE key 时间毫秒(可以为0) value</li>
+<li>MOVE: 将当前数据库中的key移动到另外的数据库,MOVE key dbID。移动一个不存在的key或者已经存在了的key会失败，</li>
+<li>OBJECT,SACAN,SORT</li>
+</ol>
+<blockquote>
+<p>这里还有其他的平台提供的Redis命令可以参考。<a href="http://doc.redisfans.com/index.html" target="_blank" rel="external">查看</a>,<a href="http://www.runoob.com/redis/redis-tutorial.html" target="_blank" rel="external">菜鸟教程</a></p>
+</blockquote>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS -->
+    <div id="disqus-comment">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/04/19/Redis基础用法/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/04/19/Redis基础用法/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//lvtanxi.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/05/03/Java-数据结构与算法基础/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/04/06/Java-解析Xml的四种方式/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="吕檀溪's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        lvtanxi@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:lvtanxi@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android笔记/">Android笔记<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Git笔记/">Git笔记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/NodeJs/">NodeJs<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Redis/">Redis<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Spring-boot/">Spring-boot<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/数据库/">数据库<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">22</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo">
+        </a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/5121900660/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.svg);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/lvtanxi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;檀溪博客
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+    <!-- 使用 DISQUS js 代码 -->
+    <script id="dsq-count-scr" src="//lvtanxi.disqus.com/count.js" async></script>
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
